@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="297mm"
+   version="1.1"
+   width="210mm"
+   id="svg105"
+   sodipodi:docname="fractal.svg"
+   inkscape:version="1.1.2 (1:1.1+202202050852+0a00cf5339)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview107"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="0.371673"
+     inkscape:cx="-620.1688"
+     inkscape:cy="712.99233"
+     inkscape:window-width="1920"
+     inkscape:window-height="1025"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg105"
+     units="mm"
+     inkscape:snap-center="true"
+     showborder="true"
+     inkscape:document-units="mm" />
+  <defs
+     id="defs5">
+    <clipPath
+       id="border_clip">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect2" />
+    </clipPath>
+    <clipPath
+       id="border_clip-6">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect2-3" />
+    </clipPath>
+    <clipPath
+       id="clipPath3151">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3149" />
+    </clipPath>
+    <clipPath
+       id="clipPath3155">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3153" />
+    </clipPath>
+    <clipPath
+       id="clipPath3159">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3157" />
+    </clipPath>
+    <clipPath
+       id="clipPath3163">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3161" />
+    </clipPath>
+    <clipPath
+       id="clipPath3167">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3165" />
+    </clipPath>
+    <clipPath
+       id="clipPath3171">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3169" />
+    </clipPath>
+    <clipPath
+       id="clipPath3175">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3173" />
+    </clipPath>
+    <clipPath
+       id="clipPath3179">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3177" />
+    </clipPath>
+    <clipPath
+       id="clipPath3183">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3181" />
+    </clipPath>
+    <clipPath
+       id="clipPath3187">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3185" />
+    </clipPath>
+    <clipPath
+       id="clipPath3191">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3189" />
+    </clipPath>
+    <clipPath
+       id="clipPath3195">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3193" />
+    </clipPath>
+    <clipPath
+       id="clipPath3199">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3197" />
+    </clipPath>
+    <clipPath
+       id="clipPath3203">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3201" />
+    </clipPath>
+    <clipPath
+       id="clipPath3207">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3205" />
+    </clipPath>
+    <clipPath
+       id="clipPath3211">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3209" />
+    </clipPath>
+    <clipPath
+       id="clipPath3215">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3213" />
+    </clipPath>
+    <clipPath
+       id="clipPath3219">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3217" />
+    </clipPath>
+    <clipPath
+       id="clipPath3223">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3221" />
+    </clipPath>
+    <clipPath
+       id="clipPath3227">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3225" />
+    </clipPath>
+    <clipPath
+       id="clipPath3231">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3229" />
+    </clipPath>
+    <clipPath
+       id="clipPath3235">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3233" />
+    </clipPath>
+    <clipPath
+       id="clipPath3239">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3237" />
+    </clipPath>
+    <clipPath
+       id="clipPath3243">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3241" />
+    </clipPath>
+    <clipPath
+       id="clipPath3247">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3245" />
+    </clipPath>
+    <clipPath
+       id="clipPath3251">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3249" />
+    </clipPath>
+    <clipPath
+       id="clipPath3255">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3253" />
+    </clipPath>
+    <clipPath
+       id="clipPath3259">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3257" />
+    </clipPath>
+    <clipPath
+       id="clipPath3263">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3261" />
+    </clipPath>
+    <clipPath
+       id="clipPath3267">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3265" />
+    </clipPath>
+    <clipPath
+       id="clipPath3271">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3269" />
+    </clipPath>
+    <clipPath
+       id="clipPath3275">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3273" />
+    </clipPath>
+    <clipPath
+       id="clipPath3279">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3277" />
+    </clipPath>
+    <clipPath
+       id="clipPath3283">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3281" />
+    </clipPath>
+    <clipPath
+       id="clipPath3287">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3285" />
+    </clipPath>
+    <clipPath
+       id="clipPath3291">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3289" />
+    </clipPath>
+    <clipPath
+       id="clipPath3295">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3293" />
+    </clipPath>
+    <clipPath
+       id="clipPath3299">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3297" />
+    </clipPath>
+    <clipPath
+       id="clipPath3303">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3301" />
+    </clipPath>
+    <clipPath
+       id="clipPath3307">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3305" />
+    </clipPath>
+    <clipPath
+       id="clipPath3311">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3309" />
+    </clipPath>
+    <clipPath
+       id="clipPath3315">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3313" />
+    </clipPath>
+    <clipPath
+       id="clipPath3319">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3317" />
+    </clipPath>
+    <clipPath
+       id="clipPath3323">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3321" />
+    </clipPath>
+    <clipPath
+       id="clipPath3327">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3325" />
+    </clipPath>
+    <clipPath
+       id="clipPath3331">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3329" />
+    </clipPath>
+    <clipPath
+       id="clipPath3335">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3333" />
+    </clipPath>
+    <clipPath
+       id="clipPath3339">
+      <rect
+         height="800"
+         width="800"
+         x="0"
+         y="0"
+         id="rect3337" />
+    </clipPath>
+  </defs>
+  <path
+     id="rect975"
+     style="fill:none;stroke:#000004"
+     d="M 47.485893,211.89534 H 746.2149 v 698.729 H 47.485893 Z" />
+  <path
+     id="path1411"
+     style="fill:none;stroke:#000004"
+     d="m 142.48275,315.92297 a 4.478569,4.478569 0 0 1 -4.47857,4.47857 4.478569,4.478569 0 0 1 -4.47857,-4.47857 4.478569,4.478569 0 0 1 4.47857,-4.47857 4.478569,4.478569 0 0 1 4.47857,4.47857 z" />
+  <path
+     id="path1411-44"
+     style="fill:none;stroke:#000004"
+     d="m 142.48275,806.43683 a 4.478569,4.478569 0 0 1 -4.47857,4.47857 4.478569,4.478569 0 0 1 -4.47857,-4.47857 4.478569,4.478569 0 0 1 4.47857,-4.47857 4.478569,4.478569 0 0 1 4.47857,4.47857 z" />
+  <path
+     id="path1411-47"
+     style="fill:none;stroke:#000004"
+     d="m 660.01525,806.43683 a 4.478569,4.478569 0 0 1 -4.47857,4.47857 4.478569,4.478569 0 0 1 -4.47857,-4.47857 4.478569,4.478569 0 0 1 4.47857,-4.47857 4.478569,4.478569 0 0 1 4.47857,4.47857 z" />
+  <path
+     id="path1411-4"
+     style="fill:none;stroke:#000004"
+     d="m 660.01525,315.92297 a 4.478569,4.478569 0 0 1 -4.47857,4.47857 4.478569,4.478569 0 0 1 -4.47857,-4.47857 4.478569,4.478569 0 0 1 4.47857,-4.47857 4.478569,4.478569 0 0 1 4.47857,4.47857 z" />
+  <g
+     id="g1539"
+     transform="matrix(0.71780304,0.7556635,-0.7556635,0.71780304,381.55096,16.637112)"
+     style="stroke:#000004;stroke-width:0.95947;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+    <path
+       id="polyline7"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 400.5,400.5 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 400.5 V 388 h -3.125 v 3.125 H 394.25 V 388 384.875 h -3.125 V 388 H 388 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 388 V 375.5 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 375.5 h 3.125 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 375.5 H 413 v -3.125 h -3.125" />
+    <path
+       id="polyline9"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 409.875,372.375 v -3.125 h 3.125 3.125 v -3.125 H 413 V 363 h -3.125 v 3.125 H 406.75 V 363 359.875 h -3.125 V 363 H 400.5 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 400.5 V 350.5 h -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 V 350.5 H 388 v 3.125 h 3.125 v 3.125 H 388 384.875 v 3.125 H 388 V 363 h -3.125 v 3.125 H 381.75 V 363" />
+    <path
+       id="polyline11"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 381.75,363 v -3.125 h -3.125 V 363 H 375.5 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 375.5 v -3.125 -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 375.5 V 338 h -3.125 v 3.125 H 369.25 V 338 334.875 h -3.125 V 338 H 363 v 3.125 h 3.125 v 3.125 H 363 359.875 v 3.125 H 363 v 3.125 h -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125" />
+    <path
+       id="polyline13"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="M 353.625,347.375 V 350.5 H 350.5 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 350.5 V 338 h -3.125 v 3.125 H 344.25 V 338 334.875 h -3.125 V 338 H 338 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 338 V 325.5 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 325.5 h 3.125 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 325.5 H 363" />
+    <path
+       id="polyline15"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 363,325.5 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 363 V 313 h -3.125 v 3.125 H 356.75 V 313 309.875 h -3.125 V 313 H 350.5 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 350.5 V 300.5 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 300.5 H 363 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 363 V 288 h 3.125 v -3.125" />
+    <path
+       id="polyline17"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 366.125,284.875 h 3.125 v 3.125 3.125 h 3.125 V 288 h 3.125 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 h 3.125 v 3.125 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 H 375.5 V 313 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 313 H 388 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 388 V 300.5 h 3.125 v -3.125 h 3.125 v 3.125" />
+    <path
+       id="polyline19"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 394.25,300.5 v 3.125 h 3.125 V 300.5 h 3.125 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 300.5 H 413 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 413 V 288 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 288 h 3.125 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 h 3.125 v 3.125 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125" />
+    <path
+       id="polyline21"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="M 422.375,309.875 H 425.5 V 313 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 313 H 438 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 438 V 300.5 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 300.5 h 3.125 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 450.5 V 288 h -3.125 v 3.125 H 444.25 V 288 284.875 h -3.125 V 288 H 438" />
+    <path
+       id="polyline23"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 438,288 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 438 V 275.5 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 275.5 h 3.125 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 275.5 H 463 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 463 V 263 h -3.125 v 3.125 H 456.75 V 263 259.875 h -3.125 V 263 H 450.5 v -3.125 h -3.125" />
+    <path
+       id="polyline25"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 447.375,259.875 v -3.125 h 3.125 3.125 v -3.125 H 450.5 V 250.5 h -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 V 250.5 H 438 v 3.125 h 3.125 v 3.125 H 438 434.875 v 3.125 H 438 V 263 h -3.125 v 3.125 H 431.75 V 263 259.875 h -3.125 V 263 H 425.5 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 425.5 v -3.125 -3.125 h -3.125 v -3.125 h 3.125" />
+    <path
+       id="polyline27"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 425.5,244.25 h 3.125 v -3.125 H 425.5 V 238 h -3.125 v 3.125 H 419.25 V 238 234.875 h -3.125 V 238 H 413 v 3.125 h 3.125 v 3.125 H 413 409.875 v 3.125 H 413 v 3.125 h -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 V 250.5 H 400.5 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 400.5 V 238 h -3.125 v 3.125 H 394.25 V 238 234.875 h -3.125" />
+    <path
+       id="polyline29"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="M 391.125,234.875 V 238 H 388 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 388 V 225.5 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 225.5 h 3.125 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 225.5 H 413 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 413 V 213 h -3.125 v 3.125 H 406.75 V 213 209.875 h -3.125 V 213 H 400.5" />
+    <path
+       id="polyline31"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 400.5,213 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 400.5 V 200.5 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 200.5 H 413 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 413 V 188 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 188 h 3.125 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 h 3.125 v 3.125 3.125 h 3.125" />
+    <path
+       id="polyline33"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 428.625,203.625 v 3.125 h -3.125 -3.125 v 3.125 H 425.5 V 213 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 213 H 438 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 438 V 200.5 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 200.5 h 3.125 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 450.5 V 188 h -3.125 v 3.125 H 444.25 V 188" />
+    <path
+       id="polyline35"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 444.25,188 v -3.125 h -3.125 V 188 H 438 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 438 V 175.5 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 175.5 h 3.125 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 175.5 H 463 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 463 V 163 h -3.125 v 3.125 H 456.75 V 163 159.875 h -3.125" />
+    <path
+       id="polyline37"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="M 453.625,159.875 V 163 H 450.5 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 450.5 V 150.5 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 150.5 H 463 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 463 V 138 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 138 h 3.125 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 h 3.125 v 3.125" />
+    <path
+       id="polyline39"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 475.5,150.5 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 H 475.5 V 163 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 163 H 488 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 488 V 150.5 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 150.5 h 3.125 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 H 500.5 V 163 h 3.125 v -3.125" />
+    <path
+       id="polyline41"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 503.625,159.875 h 3.125 v 3.125 3.125 h 3.125 V 163 H 513 v 3.125 h 3.125 v 3.125 H 513 509.875 v 3.125 H 513 v 3.125 h -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 v 3.125 h -3.125 -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 V 175.5 H 488 v 3.125 h 3.125 v 3.125 H 488 484.875 v 3.125 H 488 V 188 h 3.125 v -3.125 h 3.125 V 188" />
+    <path
+       id="polyline43"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 494.25,188 v 3.125 h 3.125 V 188 h 3.125 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 h 3.125 v 3.125 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 H 500.5 V 213 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 213 H 513 v 3.125 h 3.125 v 3.125 H 513 509.875 v 3.125 H 513 v 3.125 h -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125" />
+    <path
+       id="polyline45"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 503.625,222.375 v 3.125 h -3.125 -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 V 225.5 H 488 v 3.125 h 3.125 v 3.125 H 488 484.875 v 3.125 H 488 V 238 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 238 h 3.125 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 h 3.125 v 3.125 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 250.5 H 513" />
+    <path
+       id="polyline47"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 513,250.5 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 513 V 238 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 238 h 3.125 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 h 3.125 v 3.125 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 H 525.5 V 263 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 263 H 538 v -3.125 h -3.125" />
+    <path
+       id="polyline49"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 534.875,259.875 v -3.125 h 3.125 3.125 v -3.125 H 538 V 250.5 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 250.5 h 3.125 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 550.5 V 238 h -3.125 v 3.125 H 544.25 V 238 234.875 h -3.125 V 238 H 538 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 538 V 225.5 h 3.125 v -3.125 h 3.125 v 3.125" />
+    <path
+       id="polyline51"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 544.25,225.5 v 3.125 h 3.125 V 225.5 h 3.125 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 225.5 H 563 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 563 V 213 h -3.125 v 3.125 H 556.75 V 213 209.875 h -3.125 V 213 H 550.5 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 550.5 V 200.5 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125" />
+    <path
+       id="polyline53"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="M 559.875,203.625 V 200.5 H 563 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 563 V 188 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 188 h 3.125 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 h 3.125 v 3.125 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 H 575.5 V 213 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 213 H 588" />
+    <path
+       id="polyline55"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 588,213 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 588 V 200.5 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 200.5 h 3.125 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 H 600.5 V 213 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 213 H 613 v 3.125 h 3.125 v 3.125 H 613 609.875 v 3.125 H 613 v 3.125 h -3.125 v 3.125" />
+    <path
+       id="polyline57"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 609.875,228.625 h -3.125 v -3.125 -3.125 h -3.125 v 3.125 h -3.125 -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 V 225.5 H 588 v 3.125 h 3.125 v 3.125 H 588 584.875 v 3.125 H 588 V 238 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 238 h 3.125 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 h 3.125 v 3.125 h 3.125 v -3.125 h 3.125 v 3.125" />
+    <path
+       id="polyline59"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 606.75,250.5 v 3.125 h 3.125 V 250.5 H 613 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 613 V 238 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 238 h 3.125 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 h 3.125 v 3.125 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 H 625.5 V 263 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125" />
+    <path
+       id="polyline61"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="M 634.875,266.125 V 263 H 638 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 638 V 250.5 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 250.5 h 3.125 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 H 650.5 V 263 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 263 H 663 v 3.125 h 3.125 v 3.125 H 663 659.875 v 3.125 H 663 v 3.125" />
+    <path
+       id="polyline63"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 663,275.5 h -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 v 3.125 h -3.125 -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 V 275.5 H 638 v 3.125 h 3.125 v 3.125 H 638 634.875 v 3.125 H 638 V 288 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 288 h 3.125 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 h 3.125 v 3.125 h -3.125 v 3.125" />
+    <path
+       id="polyline65"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 647.375,303.625 h -3.125 v -3.125 -3.125 h -3.125 V 300.5 H 638 v 3.125 h 3.125 v 3.125 H 638 634.875 v 3.125 H 638 V 313 h -3.125 v 3.125 H 631.75 V 313 309.875 h -3.125 V 313 H 625.5 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 625.5 v -3.125 -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 625.5 V 288 h -3.125 v 3.125 H 619.25 V 288" />
+    <path
+       id="polyline67"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 619.25,288 v -3.125 h -3.125 V 288 H 613 v 3.125 h 3.125 v 3.125 H 613 609.875 v 3.125 H 613 v 3.125 h -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 v 3.125 h -3.125 -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 V 300.5 H 588 v 3.125 h 3.125 v 3.125 H 588 584.875 v 3.125 H 588 V 313 h -3.125 v 3.125 H 581.75 V 313 309.875 h -3.125" />
+    <path
+       id="polyline69"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="M 578.625,309.875 V 313 H 575.5 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 575.5 v -3.125 -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 575.5 V 288 h -3.125 v 3.125 H 569.25 V 288 284.875 h -3.125 V 288 H 563 v 3.125 h 3.125 v 3.125 H 563 559.875 v 3.125 H 563 v 3.125 h -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 V 300.5 H 550.5" />
+    <path
+       id="polyline71"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 550.5,300.5 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 H 550.5 V 313 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 313 H 563 v 3.125 h 3.125 v 3.125 H 563 559.875 v 3.125 H 563 v 3.125 h -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 v 3.125 h -3.125 -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 V 325.5 H 538 v 3.125 h 3.125" />
+    <path
+       id="polyline73"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 541.125,328.625 v 3.125 H 538 534.875 v 3.125 H 538 V 338 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 338 h 3.125 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 h 3.125 v 3.125 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 350.5 H 563 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 563 V 338 h 3.125 v -3.125 h 3.125 V 338" />
+    <path
+       id="polyline75"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 569.25,338 v 3.125 h 3.125 V 338 h 3.125 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 h 3.125 v 3.125 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 H 575.5 V 363 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 363 H 588 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 588 V 350.5 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125" />
+    <path
+       id="polyline77"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="M 597.375,353.625 V 350.5 h 3.125 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 H 600.5 V 363 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 363 H 613 v 3.125 h 3.125 v 3.125 H 613 609.875 v 3.125 H 613 v 3.125 h -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 v 3.125 h -3.125 -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 V 375.5 H 588" />
+    <path
+       id="polyline79"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 588,375.5 v 3.125 h 3.125 v 3.125 H 588 584.875 v 3.125 H 588 V 388 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 388 h 3.125 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 h 3.125 v 3.125 h -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 V 400.5 H 588 v 3.125 h 3.125 v 3.125 H 588 584.875 v 3.125 H 588 V 413 h -3.125 v 3.125" />
+    <path
+       id="polyline81"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="M 584.875,416.125 H 581.75 V 413 409.875 h -3.125 V 413 H 575.5 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 575.5 v -3.125 -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 575.5 V 388 h -3.125 v 3.125 H 569.25 V 388 384.875 h -3.125 V 388 H 563 v 3.125 h 3.125 v 3.125 H 563 559.875 v 3.125 H 563 v 3.125 h -3.125 v 3.125 H 556.75 V 400.5" />
+    <path
+       id="polyline83"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 556.75,400.5 v -3.125 h -3.125 V 400.5 H 550.5 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 H 550.5 V 413 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 413 H 563 v 3.125 h 3.125 v 3.125 H 563 559.875 v 3.125 H 563 v 3.125 h -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 v 3.125 h -3.125 -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125" />
+    <path
+       id="polyline85"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="M 541.125,422.375 V 425.5 H 538 v 3.125 h 3.125 v 3.125 H 538 534.875 v 3.125 H 538 V 438 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 438 h 3.125 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 h 3.125 v 3.125 h -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 V 450.5 H 538 v 3.125 h 3.125 v 3.125 H 538 534.875 v 3.125 H 538 V 463" />
+    <path
+       id="polyline87"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 538,463 h -3.125 v 3.125 H 531.75 V 463 459.875 h -3.125 V 463 H 525.5 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 525.5 v -3.125 -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 525.5 V 438 h -3.125 v 3.125 H 519.25 V 438 434.875 h -3.125 V 438 H 513 v 3.125 h 3.125 v 3.125 H 513 509.875 v 3.125 H 513 v 3.125 h -3.125 v 3.125" />
+    <path
+       id="polyline89"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 509.875,453.625 h -3.125 v -3.125 -3.125 h -3.125 V 450.5 H 500.5 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 500.5 V 438 h -3.125 v 3.125 H 494.25 V 438 434.875 h -3.125 V 438 H 488 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 488 V 425.5 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 425.5 h 3.125 3.125 v -3.125 h 3.125 v 3.125" />
+    <path
+       id="polyline91"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 506.75,425.5 v 3.125 h 3.125 V 425.5 H 513 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 513 V 413 h -3.125 v 3.125 H 506.75 V 413 409.875 h -3.125 V 413 H 500.5 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 500.5 v -3.125 -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 500.5 V 388 h -3.125 v 3.125 H 494.25 V 388 384.875 h -3.125" />
+    <path
+       id="polyline93"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="M 491.125,384.875 V 388 H 488 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 488 V 375.5 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 375.5 h 3.125 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125 V 375.5 H 513 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 513 V 363 h -3.125 v 3.125 H 506.75 V 363 359.875 h -3.125 V 363 H 500.5" />
+    <path
+       id="polyline95"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 500.5,363 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 500.5 V 350.5 h -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 V 350.5 H 488 v 3.125 h 3.125 v 3.125 H 488 484.875 v 3.125 H 488 V 363 h -3.125 v 3.125 H 481.75 V 363 359.875 h -3.125 V 363 H 475.5 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 475.5 v -3.125 -3.125 h -3.125" />
+    <path
+       id="polyline97"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 472.375,347.375 v -3.125 h 3.125 3.125 v -3.125 H 475.5 V 338 h -3.125 v 3.125 H 469.25 V 338 334.875 h -3.125 V 338 H 463 v 3.125 h 3.125 v 3.125 H 463 459.875 v 3.125 H 463 v 3.125 h -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 V 350.5 H 450.5 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 H 450.5 V 363 h 3.125 v -3.125 h 3.125 V 363" />
+    <path
+       id="polyline99"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 456.75,363 v 3.125 h 3.125 V 363 H 463 v 3.125 h 3.125 v 3.125 H 463 459.875 v 3.125 H 463 v 3.125 h -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 v 3.125 h -3.125 -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 V 375.5 H 438 v 3.125 h 3.125 v 3.125 H 438 434.875 v 3.125 H 438 V 388 h 3.125 v -3.125 h 3.125 v 3.125 3.125 h 3.125" />
+    <path
+       id="polyline101"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="M 447.375,391.125 V 388 h 3.125 v 3.125 h 3.125 v 3.125 h -3.125 -3.125 v 3.125 h 3.125 v 3.125 h -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 V 400.5 H 438 v 3.125 h 3.125 v 3.125 H 438 434.875 v 3.125 H 438 V 413 h -3.125 v 3.125 H 431.75 V 413 409.875 h -3.125 V 413 H 425.5 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 425.5 V 400.5" />
+    <path
+       id="polyline103"
+       clip-path="url(#border_clip-6)"
+       style="fill:none;stroke-width:0.468583;stroke-linecap:round"
+       transform="matrix(2.0475996,0,0,2.0475996,-635.91493,-265.98969)"
+       d="m 425.5,400.5 v -3.125 h -3.125 v -3.125 h 3.125 3.125 v -3.125 H 425.5 V 388 h -3.125 v 3.125 H 419.25 V 388 384.875 h -3.125 V 388 H 413 v 3.125 h 3.125 v 3.125 H 413 409.875 v 3.125 H 413 v 3.125 h -3.125 v 3.125 h -3.125 v -3.125 -3.125 h -3.125 V 400.5 H 400.5" />
+  </g>
+</svg>

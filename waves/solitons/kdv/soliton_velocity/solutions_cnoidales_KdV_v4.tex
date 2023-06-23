@@ -1,0 +1,754 @@
+% === STANDARD PORTRAIT MODE
+\documentclass[10pt,a4paper, oneside, fleqn]{myarticle}
+\usepackage[body={16cm,24cm}]{geometry}
+
+% === LANDSCAPE MODE FOR LARGE EQUATIONS
+%\documentclass[landscape, a4paper, fleqn, 10pt, oneside]{article}
+%\usepackage[body={26cm,17.5cm}]{geometry}
+
+\usepackage[french]{babel}
+\usepackage{lmodern}
+
+\usepackage[multidot]{grffile}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+
+\usepackage{booktabs}
+
+\usepackage{url}
+
+\usepackage{scrtime}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{fancyhdr}
+
+\usepackage[linktoc=all]{hyperref}
+\hypersetup{
+  colorlinks,
+  linkcolor={red!60!black},
+  % citecolor={blue!50!black},
+  citecolor={Blue},
+  urlcolor={blue!80!black}
+}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage[%
+rm={oldstyle,tabular=true},%
+sf={oldstyle,tabular=true},%
+tt={oldstyle,proportional},%
+]{cfr-lm}      % Adapter la toc cf. TITLESEC
+\rmfamily
+\DeclareFontShape{T1}{clmj}{b}{sc}{<->ssub*cmr/bx/sc}{}
+\DeclareFontShape{T1}{clmj}{bx}{sc}{<->ssub*cmr/bx/sc}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%      FANCYHDR PACKAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{\scriptsize \textsl{Solutions cnoïdales de KdV}}
+\cfoot{\thepage}
+\rfoot{\scriptsize \textsl{version {\texttt{v4}}, compilée le \today\ à \thistime}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%      TITLESEC PACKAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{\section}
+{\normalfont\Large\sffamily\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\large\sffamily\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+{\normalfont\normalsize\sffamily\bfseries}{\thesubsubsection}{1em}{}
+\titleformat{\paragraph}[runin]
+{\normalfont\normalsize\sffamily\bfseries}{\theparagraph}{1em}{}
+\titleformat{\subparagraph}[runin]
+{\normalfont\normalsize\sffamily\bfseries}{\thesubparagraph}{1em}{}
+
+\newcommand{\id}{\mathrm{i}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\idd}{\,\mathrm{d}}
+\newcommand{\Rset}{\mathbb{R}}
+\newcommand{\Nset}{\mathbb{N}}
+\newcommand{\Tset}{\mathbb{T}}
+\newcommand{\Zset}{\mathbb{Z}}
+\newcommand{\Ecal}{\mathcal{E}}
+\newcommand{\Hcal}{\mathcal{H}}
+\newcommand{\grandO}{\mathscr{O}}
+\newcommand{\eqdef}{{\stackrel{\tiny \mathrm{def}}{=}}}
+\newcommand{\eff}{_{\mathrm{eff}}}
+
+\usepackage{xcolor}
+
+\newcommand{\textblue}[1]{\textcolor{blue}{#1}}
+
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\ellipF}{F}
+\DeclareMathOperator{\ellipE}{E}
+\DeclareMathOperator{\ellipK}{K}
+\DeclareMathOperator{\cn}{cn}
+\DeclareMathOperator{\sn}{sn}
+\DeclareMathOperator{\dn}{dn}
+\DeclareMathOperator{\am}{am}
+
+\newcommand{\cnoidal}[2]{\cn\left(\left. #1\right\vert #2\right)}
+\newcommand{\snoidal}[2]{\sn\left(\left. #1\right\vert #2\right)}
+
+\begin{document}
+\newdimen\oldparindent\oldparindent=\parindent\
+%
+%---------------------------- DEBUT ABSTRACT ET TITLE -------------------------
+%
+
+\begin{center}
+  {\huge \bfseries \sffamily Solutions cnoïdales de  l'équation KdV
+  }
+\bigskip
+
+  
+\begin{minipage}{.9\textwidth}\parindent=\oldparindent
+  \slshape \indent On regarde quelles sont les solutions \textbf{autres que solitons} de l'équation de Korteweg--de Vries (KdV) dans le cas général, sur l'axe réel et dans le cas des ondes se propageant vers la droite. On s'intéressera ensuite au cas du tore $\Tset^1$, en cherchant les ondes cnoïdales ayant pour période spatiale $T^\xi = 2\pi/n$.
+
+%  Lorsque le terme non linéaire est de même signe que  le  terme dispersif,  on a des solutions en élévation. S'il est de signe contraire, on a des solutions en dépression.
+
+%  De plus, quand le signe de la non-linéarité est positif, les solitons en élévation sont supersoniques et les solitons en dépression sont subsoniques. C'est le contraire qui se produit dans le cas où la non-linéarité est de signe négatif.
+
+\end{minipage}
+\end{center}
+%
+%---------------------------- FIN ABSTRACT ET TITLE-------------------------
+%
+
+%\medskip
+
+\subsection*{Rappels}
+
+\subsubsection*{Intégrales elliptiques \boldmath{$\ellipE, \ellipF, \ellipK$}}
+On définit les intégrales elliptiques de 1\iere\ et de 2\ieme\ espèce, incomplètes ou complètes comme
+\begin{align}
+  &\ellipE(\phi | m) = \int_0^\phi \sqrt{1-m\sin^2x}\,\dd x, &&\ellipE(m) = \int_0^{\frac\pi2} \sqrt{1-m\sin^2x}\,\dd x,\\
+  &\ellipF(\phi | m) = \int_0^\phi \frac{\dd x}{\sqrt{1-m\sin^2x}}, &&\ellipK(m) = \int_0^{\frac\pi2} \frac{\dd x}{\sqrt{1-m\sin^2x}}.
+\end{align}
+et l'on rappelle les développements limités ou asymptotiques suivants des intégrales complètes :
+\begin{align}
+  &\ellipE(m) \underset{m\to 0^+}{=} \frac{\pi}{2} - \frac{\pi}{8} m + \grandO(m^2)\\
+  &\ellipK(m) \underset{m\to 0^+}{=} \frac{\pi}{2} + \frac{\pi}{8} m + \grandO(m^2)\\
+  &\ellipE(m=1-\mu) \underset{m\to 1^-}{=}1+\frac{\mu}{4}  \left[-\log(\mu)-1+4\log (2)\right]+\grandO\left(\mu^2\right)\\
+  &\ellipK(m=1-\mu) \underset{m\to 1^-}{=}\left[2 \log (2)-\frac{\log (\mu
+   )}{2}\right]+\frac{\mu}{8}  [-\log (\mu
+   )-2+4 \log (2)]+\grandO\left(\mu ^2\right)
+\end{align}
+
+\subsubsection*{Fonctions \boldmath{$\cn, \sn, \dn, \am$}}
+On fixe $m$. Si l'on a
+$  u=\ellipF(\varphi|m)$ 
+qui est une fonction $\mathscr{C}^\infty$ de $\varphi$, strictement croissante, alors on définit les fonctions elliptiques de Jacobi comme 
+\begin{align}
+  \am(u\vert m) &\,\eqdef\,  \varphi =\ellipF^{-1}(u\vert m),
+  \\
+  \cn(u\vert m) &\,\eqdef\,  \cos\varphi   = \cos[\am(u\vert m)] ,
+  \\
+  \sn(u\vert m) &\,\eqdef\,  \sin\varphi = \sin[\am(u\vert m)],
+  \\
+  \dn(u\vert m) &\,\eqdef\,  \sqrt{1-m\sin^2\varphi} = \sqrt{1-m\sin^2[\am(u\vert m)]  }.
+\end{align}
+% En matière d'équation différentielle, les fonctions $\cn(x), \sn(x), \dn(x)$ sont solutions des équations différentielles ordinaires respectives
+% \begin{gather}
+%   y'' = (2-m)y - 2 y^3,\\
+%   y''=-(1-m)y + 2m y^3,\\
+%   y'' = -(1-2m)y - 2my^3.
+% \end{gather}
+
+
+%\medskip
+
+\section{Propriétés de l'équation KdV en domaine infini (sur \boldmath{$\Rset$)}}
+
+On part de l'équation de Korteweg--de Vries pour des ondes se propageant vers la droite, écrite sous la forme
+\begin{equation}
+  \eta_t + c_0\left[ (1 + B\eta) \eta_x + D\eta_{xxx}\right]=0. \label{KdV}
+\end{equation}
+En matière de dimension, on a $[B]=L^{-1}$ et $[D]=L^2$. 
+
+\paragraph{Régime linéaire :} On a $\eta_t + c_0\left[  \eta_x + D\eta_{xxx}\right]=0$. On pose $\eta(x,t)=\varepsilon \exp[\id(k x - \omega t)]$ et l'on retrouve la relation de dispersion
+\begin{equation}
+  \omega = c_0\left[k - D k^3\right].
+\end{equation}
+Quand $D$ est négatif, on est en régime capillaire (relation de dispersion convexe). Quand $D$ est positif, on est en régime gravitaire (relation de dispersion non convexe).
+
+\paragraph{Symétries :} Pour $t\mapsto -t$ (renversement du temps), l'équation devient 
+\begin{equation}
+  \eta_t - c_0\left[ (1 + B\eta) \eta_x + D\eta_{xxx}\right]=0.
+\end{equation}
+et l'on s'occupe alors de solutions se propageant vers la gauche. Elles sont les mêmes que vers la droite sous la transformation $t\mapsto -t$ et $x\mapsto -x$.
+
+\section{Recherche des solutions cnoïdales}
+
+\textsf{Les calculs suivants sont tirés du chapitre~5 (p. 529) de la thèse de {M. W. Dingemans} (1994)%
+  \footnote{\textsc{M. W. Dingemans}, \emph{Water wave propagation over uneven bottoms} (1994), disponible à l'adresse : \url{http://resolver.tudelft.nl/uuid:67580088-62af-4c6f-b32e-b3940584e5d2}},  plus spécifiquement de la section 5.4, \emph{Periodic Waves}, p. 546.}
+
+\medskip
+
+On cherche des solutions en translation uniforme qui s'écrivent
+\begin{equation}
+  \eta(x,t)=\eta(\xi(x,t)) \qquad\text{ avec } \xi(x,t) = x-vc_0 t
+\end{equation}
+et telles qu'elles soient spatialement périodiques si bien que \eqref{KdV} donne
+\begin{equation}
+   c_0\left[ (1-v + B\eta) \eta_\xi + D\eta_{\xi\xi\xi}\right]=0.
+\end{equation}
+ce qui donne, en intégrant sur $\xi$ 
+\begin{equation}
+  c_0\left[ (1-v)\eta + \frac B2\eta^2 + D\eta_{\xi\xi}\right]= - c_0 C_1.
+\end{equation}
+avec $C_1$ donné par les conditions aux limites d'intégration, donc donné intrinsèquement par les solutions à trouver elles-mêmes pour être auto-cohérent. On obtient alors une équation de Newton
+\begin{equation}
+ \eta_{\xi\xi} = -\frac 1 D \left[ C_1 + (1-v)\eta + \frac B2\eta^2\right] = -\frac{\dd W}{\dd\eta}.
+\end{equation}
+avec le potentiel $W(\eta)$ qui s'écrit (à une constante près)
+\begin{equation}
+  \fbox{$W(\eta) = \displaystyle \frac 1 D \left[  C_1 \eta + \frac 12(1-v)\eta^2 + \frac B6\eta^3\right]$}\,. \label{pot_W}
+\end{equation}
+On a donc, par quadrature, en multipliant par $\eta_\xi$ puis en intégrant sur $\xi$
+\begin{equation}
+  \frac 1 2\eta_{\xi}^2 + W(\eta) = \Ecal_0 = \Hcal (q,p).
+\end{equation}
+avec $\Hcal$ le hamiltonien de variable conjuguées « cartésiennes » $(q,p)\equiv(\eta, \eta_\xi)$ d'une particule de masse unité dans un potentiel $W(\eta)$.
+Comparé au cas soliton KdV, une partie linéaire a été ajoutée ($C_1\neq 0$), correspondant au fait qu'on ne cherche plus de solutions localisées, mais des solutions périodiques. Cela a pour conséquence que $\eta = 0$ ne sera plus racine double du problème $W(\eta) = \Ecal_0$.
+
+La question sera de savoir si en passant en coordonnée azimutale, on peut avoir des solutions périodiques avec une période spatiale $T^\xi=2\pi$ (sans qu'il s'agisse de \og la \fg\ période, i.e. la plus petite des périodes).
+
+
+
+\subsection*{\boldmath{Étude du potentiel $W$}}
+
+C'est une fonction polynomiale cubique, elle sera soit monotone, soit possèdera un minimum local et un maximum local, que l'on notera $\eta_\pm$  et qui vérifient l'équation $W'(\eta_\pm) = 0$, i.e.
+\begin{equation}
+  C_1 + (1-v) \eta_\pm + \frac{B}{2} \eta_\pm^2 = 0.
+\end{equation}
+On doit pour cela avoir un discriminant positif strictement, soit
+\begin{equation}
+  \Delta = (1-v)^2 - 2BC_1 >0.
+\end{equation}
+Si la condition est satisfaite, on a alors
+\begin{gather}
+  \eta_\pm = \frac{(v-1)\pm \sqrt{(v-1)^2 - 2BC_1}}{B}.
+\end{gather}
+La convexité en ces points sera donnée par le signe de $W''(\eta_\pm)$ et vaut
+\begin{equation}
+  W''(\eta_\pm) = \frac{1}{D}\left[(1-v) + B\eta_\pm\right]=\pm\frac{1}{D}\sqrt{(v-1)^2 - 2BC_1}.
+\end{equation}
+Sachant que par hypothèse, le terme sous la racine carrée est positif, le fait d'être un maximum local en $\eta_{\max}$ (l'un des deux cas où $W''(\eta_\pm)<0$) ou un minimum local  en $\eta_{\min}$ (l'un des deux cas où $W''(\eta_\pm)>0$) sera donné par le signe de $D$.
+
+On notera $\Ecal_{\min}=W(\eta_{\min})$ et  $\Ecal_{\max}=W(\eta_{\max})$. Vu l'allure du potentiel $W(\eta)$, on doit donc osciller en fond de potentiel, autour du minimum local $\eta_{\min}$.
+
+Pour des excursions proches du minimum, on a des solutions très proches des sinusoïdes, celles pour qui $\Ecal_0\gtrsim \Ecal_{\min}$. Pour $\Ecal = \Ecal_{\max}$, on est sur une séparatrice homocline et la période tend vers l'infini. Entre les deux, on aura des solutions spatialement périodiques. 
+On passe des orbites sinusoïdales à des orbites de période « infinie ». L'ensemble de ces orbites correspondant aux ondes cnoïdales.
+
+\paragraph{Question : }Peut-on avoir une période qui soit de la forme $2\pi/n$ ?
+
+\paragraph{Rappel :} Pour un hamiltonien qui vaut
+\begin{equation}
+  H(q,p) = \frac{1}{2}p^2 + \frac{1}{2}\Omega^2 q^2,
+\end{equation}
+on a un oscillateur harmonique dont la pulsation vaut $\Omega^2$. Sa période vaut ainsi $T=2\pi/\Omega$. Au voisinage de $\eta_{\min}$, la période spatiale vaut ainsi
+\begin{equation}
+  T^\xi = \frac{2\pi}{\sqrt{W''(\eta_{\min})}} = \frac{2\pi{|D|^{1/2}}}{\left[(v-1)^2 - 2BC_1\right]^{1/4}}= \frac{2\pi{|D|^{1/2}}}{\left[\Delta\right]^{1/4}}.
+\end{equation}
+Cette quantité donne une borne inférieure de la période spatiale. Si elle est supérieure ou égale à $2\pi$, cela interdit des solutions périodiques.
+
+\paragraph{Remarque :} $D$ peut être petit, mais $\Delta$ aussi. En revanche, $\Delta$ peut être arbitrairement grand pourvu que l'on ait $-BC_1 \gg 1$, donc dans le cas $B>0$, pourvu que l'on ait $C_1 \ll -1/B$.
+
+\paragraph{Contraintes sur les solutions :} dans la mesure où notre supposée équation de KdV périodique concerne des perturbations de la surface libre, il faudra s'assurer que sur une période $T^\xi$, les variations d'élévation ont pour valeur moyenne zéro, i.e.
+\begin{equation}
+  \int_0^{T^\xi}\eta(x) \idd x = 0.\label{zero_mean_value}
+\end{equation}
+Cela implique implicitement que l'on oscille entre les valeurs $\eta_1\leq\eta(\xi)\leq \eta_2$ avec $\eta_1<0$ et $\eta_2>0$, sachant que ces deux valeurs vérifient $W(\eta_1)=W(\eta_2)=\Ecal_0$, les creux ou bosses marqués des cnoïdales correspondant à $\eta_{\min}$. On sera proche de l'homocline et l'on passera donc beaucoup de « temps » $\xi$ près de $\eta_{\max}$.
+
+
+\subsection{Cas standard \boldmath{$(B>0, \; D>0)$ et  élévations (a priori supersoniques)}}
+
+On suppose le cas KdV standard où  $(B>0, \; D>0)$ et pour lequel, on a $v > 1$ pour les solitons en élévation (supersoniques).
+
+\medskip
+
+\paragraph{Cas à éliminer (a priori) : \boldmath{$C_1>0$}} Dans le cas où $C_1 >0$, on a
+\begin{gather}
+  \eta_{\max} = \eta_- >0,\\
+  \eta_{\min} = \eta_+ > \eta_- >0.
+\end{gather}
+On oscillera donc entre des valeurs de $\eta$ positives (cf. Fig.~\ref{fig_pot_W}\,(a)). Ce n'est pas ce que nous recherchons comme solution. On a écrit en tête de paragraphe qu'on éliminait ce cas a priori. En fait, on pourra le garder dans le cas $v-1<0$ (cf. conclusions).
+
+\begin{figure}[ht!]
+  \centering
+  \quad(a)\hspace*{6cm}(b)
+  
+  \includegraphics[width=.4\textwidth]{pot_W_D_pos_C1_pos.pdf}\includegraphics[width=.4\textwidth]{pot_W_D_pos_C1_neg.pdf}
+  \caption{Notations et allure des potentiels dans le cas $D>0$ et $B>0$, pour (a) $C_1>0$ et (b) $C_1<0$.}\label{fig_pot_W}
+\end{figure}
+
+On va donc supposer dorénavant que \fbox{$C_1<0$}. Sous ces conditions, on a 
+\begin{gather}
+  \eta_{\max} = \eta_- <0,\\
+  \eta_{\min} = \eta_+ > 0.
+\end{gather}
+On va choisir $\Ecal_0$ dans l'intervalle $]\Ecal_{\min}, \Ecal_{\max}[$. L'équation $W(\eta) = \Ecal_0$ possède trois solutions $\eta_3<\eta_1<\eta_2$ et l'orbite recherchée sera telle que $\eta\in[\eta_1, \eta_2]$. L'un des présupposés concernant $\eta_1$ sera tel que $\eta_1<0$ (cf. Fig.~\ref{fig_pot_W}\,(b)). Sachant que $W(0)=0$, cela implique donc $0<\Ecal_0<\Ecal_{\max}$. On doit maintenant résoudre l'équation
+\begin{equation}
+  \frac 1 2 \left( \frac{\dd \eta}{\dd \xi} \right)^2 = \Ecal_0-W(\eta) \equiv -\frac{B}{6D} (\eta - \eta_1) (\eta - \eta_2) (\eta - \eta_3). \label{eq_energie}
+\end{equation}
+Notons qu'en tant que polynome d'ordre 3, on a, par identification du terme de degré 2
+\begin{equation}
+  +\frac{B}{6D}(\eta_1 + \eta_2 + \eta_3) = \frac{1}{2D}(1-v) 
+\end{equation}
+soit la relation sur la vitesse
+\begin{equation}
+  v = 1+\frac{B}{3}(\eta_1 + \eta_2 + \eta_3). \label{vitesse_v}
+\end{equation}
+De plus, on a 
+\begin{align}
+ \lim_{\Ecal_0 \to \Ecal_{\max}^-}\eta_1= \eta_{\max},\\
+ \lim_{\Ecal_0 \to \Ecal_{\max}^-}\eta_3= \eta_{\max}.
+\end{align}
+et de manière symétrique (mais ce cas sera à exclure, car $\eta_1$ doit rester négatif)
+\begin{align}
+ \lim_{\Ecal_0 \to \Ecal_{\min}^+}\eta_1= \eta_{\min},\\
+ \lim_{\Ecal_0 \to \Ecal_{\min}^+}\eta_2= \eta_{\min}.
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%$
+
+Par la suite, nous poserons 
+\begin{equation}
+  \eta(\xi) = \eta_2 \cos^2\Psi(\xi) +  \eta_1 \sin^2\Psi(\xi) \qquad(=\eta_2 + (\eta_1-\eta_2)\sin^2\Psi=\eta_1+(\eta_2-\eta_1)\cos^2\Psi),
+\end{equation}
+et l'on a alors
+\begin{gather}
+  \eta(\xi)- \eta_1 = (\eta_2-\eta_1) \cos^2\Psi(\xi),\\
+  \eta(\xi)- \eta_2 = (\eta_1-\eta_2) \sin^2\Psi(\xi),\\
+  \eta(\xi)- \eta_3 = (\eta_2-\eta_3) - (\eta_2-\eta_1)\sin^2\Psi(\xi).
+\end{gather}
+De fait, on a les deux expressions suivantes :
+\begin{gather}
+  \frac{\dd \eta}{\dd \xi} =  2 (\eta_2-\eta_1)\cos\Psi\sin\Psi \frac{\dd \Psi}{\dd \xi},\\
+  -\frac{B}{6D} (\eta - \eta_1) (\eta - \eta_2) (\eta - \eta_3) = \frac{B}{6D} (\eta_2-\eta_1)^2\cos^2\Psi\sin^2\Psi\left[(\eta_2-\eta_3) - (\eta_2-\eta_1)\sin^2\Psi\right],
+\end{gather}
+et \eqref{eq_energie} donne ainsi
+\begin{gather}
+  2 {\left\{\left(\eta_2-\eta_1\right)^2\cos^2\Psi\sin^2\Psi\right\}} \left(\frac{\dd \Psi}{\dd \xi}\right)^2 = \frac{B (\eta_2-\eta_3)}{6D}{\left\{\cos^2\Psi\sin^2\Psi (\eta_2-\eta_1)^2\right\}}\left[1 - m\sin^2\Psi\right]
+\end{gather}
+avec
+\begin{gather}
+  \boxed{m=\frac{\eta_2-\eta_1}{\eta_2-\eta_3}=\frac{H}{\eta_2-\eta_3} \in\; ]0,1[}\,,\label{expr_m}
+\end{gather}
+ce qui donne après simplification
+\begin{gather}
+  2 \left(\frac{\dd \Psi}{\dd \xi}\right)^2 = \frac{B (\eta_2-\eta_3)}{6D}\left[1 - m\sin^2\Psi\right],
+\end{gather}
+soit
+\begin{gather}
+  \dd \xi = \sqrt{\frac{12D}{B (\eta_2-\eta_3)}}\times \frac{\dd \Psi}{\sqrt{1 - m\sin^2\Psi}},
+\end{gather}
+soit
+\begin{gather}
+   \xi(\Psi) = \sqrt{\frac{12D}{B (\eta_2-\eta_3)}} \int_0^{\Psi}\frac{\dd \psi}{\sqrt{1 - m\sin^2\psi}}=\sqrt{\frac{12D}{B (\eta_2-\eta_3)}} \ellipF(\Psi\vert m),
+\end{gather}
+avec $\ellipF$ la fonction elliptique incomplète de première espèce. Les fonction cnoïdales se définissent alors comme
+\begin{gather}
+  \cos \Psi(\xi) = \cnoidal {\frac{\xi}{\Lambda}}{m},
+  \qquad
+  \sin \Psi(\xi) = \snoidal {\frac{\xi}{\Lambda}}{m}.
+\end{gather}
+avec
+\begin{gather}
+  \Lambda = 2\sqrt{\frac{3D}{B (\eta_2-\eta_3)}}. \label{def_Lambda}
+\end{gather}
+On obtient in fine
+\begin{gather}
+  \eta(\xi) = \eta_1 + (\eta_2-\eta_1) \cn^2 \left(\left. \frac{\xi}{\Lambda} \right\vert m\right).
+\end{gather}
+\paragraph{Période spatiale :} La période spatiale $T^\xi$ est telle que
+\begin{gather}
+  T^\xi = 2 \Lambda F\left(\left.\Psi=\frac{\pi}{2}\right\vert m\right)= 2\Lambda \ellipK(m) = 4 \sqrt{\frac{3D}{B (\eta_2-\eta_3)}}\ellipK(m), \label{expr_Txi}
+\end{gather}
+où $\ellipK(m)$ désigne la fonction elliptique complète de première espèce. Pour mémoire, on a
+\begin{equation}
+  K(m = 1-\mu) \underset{\mu\to 0}{=} 2 \log 2 - \frac 1 2 \log \mu + \grandO(\mu).
+\end{equation}
+
+\medskip
+
+Enfin, la condition \eqref{zero_mean_value} de moyenne nulle s'écrit (par symétrie)
+\begin{align}
+  0&=\int_0^{\frac{1}{2}T^\xi} \left[\eta_1 + (\eta_2-\eta_1) \cn^2 \left(\left. \frac{\xi}{\Lambda} \right\vert m\right)\right]\idd \xi = \int_0^{\frac{\pi}{2}}\left[\eta_1 + (\eta_2-\eta_1) \cos^2 \Psi\right] \left(\frac{\dd \xi}{\dd \Psi}\right)\idd \Psi\\
+   &= \Lambda %\sqrt{\frac{12D}{B (\eta_2-\eta_3)}}
+     \int_0^{\frac{\pi}{2}}\frac{\eta_1 + (\eta_2-\eta_1) \cos^2 \Psi}{\sqrt{1-m\sin^2\Psi}} \idd \Psi
+\end{align}
+Enfin, on a
+\begin{align}
+  \eta_1 + (\eta_2-\eta_1) \cos^2 \Psi &= \eta_2 -(\eta_2-\eta_1)\sin^2\Psi=\eta_2 + (\eta_2-\eta_3) (1-m\sin^2\Psi-1)\\
+  & = \eta_3 + (\eta_2-\eta_3) (1-m\sin^2\Psi) = \eta_3 + \frac{\eta_2-\eta_1}{m} (1-m\sin^2\Psi)
+\end{align}
+d'où la condition \eqref{zero_mean_value} de moyenne nulle qui devient 
+\begin{align}
+  0= %\sqrt{\frac{12D}{B (\eta_2-\eta_3)}}
+  \Lambda\int_0^{\frac{\pi}{2}}\frac{\eta_3 + \frac{\eta_2-\eta_1}{m} (1-m\sin^2\Psi)}{\sqrt{1-m\sin^2\Psi}} \idd \Psi
+\end{align}
+soit la relation
+\begin{align}
+ % 0= \sqrt{\frac{12D}{B (\eta_2-\eta_3)}} \left[ \eta_3\ellipK(m) + \frac{\eta_2-\eta_1}{m}\ellipE(m) \right]
+  \frac{\eta_2-\eta_1}{m}\ellipE(m) = -\eta_3\ellipK(m), \label{condition_zero_mean}
+\end{align}
+ce qui est cohérent dans la mesure où par hypothèse, on a : \;$\eta_2-\eta_1>0$ \; et \; $\eta_3<0$.
+
+\subsubsection{Relations entre paramètres}
+
+Comme pour la solution soliton de KdV, nous allons regarder les relations entre les paramètre physiques que sont
+\begin{itemize}
+\item la hauteur $H=\eta_2-\eta_1$;
+\item la période $T^\xi$;
+\item la vitesse $v$ ;
+\end{itemize}
+et les autres paramètres introduits dans le problème ($B, D, m, \Lambda$).
+
+\bigskip
+
+Pour rappel, on a les relations suivantes, données respectivement par (\ref{vitesse_v}, \ref{expr_m}, \ref{def_Lambda}, \ref{expr_Txi}, \ref{condition_zero_mean})
+\begin{gather}
+  v=1 + \frac{B}{3}(\eta_1+\eta_2+\eta_3)\\
+  m=\frac{H}{\eta_2-\eta_3}\label{eq51}\\
+  \Lambda = 2\sqrt{\frac{3 Dm}{B H}}\\
+  T^\xi = 4 \sqrt{\frac{3 D m}{B H}}\ellipK(m)\\
+  \eta_3 = - \frac{H}{m} \frac{\ellipE(m)}{\ellipK(m)}\label{eq54}\\
+  H = \eta_2-\eta_1
+\end{gather}
+De \eqref{eq51} et \eqref{eq54}, on tire les expressions suivantes
+\begin{gather}
+  \eta_2 = \eta_3 + \frac{H}{m}
+  = \frac{H}{m}\left[ 1-\frac{\ellipE(m)}{\ellipK(m)}\right],\\
+  \eta_1 = \eta_2 - H = \frac{H}{m}\left[ 1-m-\frac{\ellipE(m)}{\ellipK(m)}\right].
+\end{gather}
+
+Sur la figure \ref{fig_eta_speed} sont tracées les allures de $\eta_1$ et $\eta_2$ en fonction du paramètre $m$, ainsi que la vitesse $v$ sous la forme de la quantité $3m(v-1)/(2BH)$. On voit qu'on peut être subsonique pour de petits $m$.
+
+\begin{figure}[ht!]
+  \centering
+  \quad(a)\hspace*{6cm}(b)
+  
+  \includegraphics[width=.4\textwidth]{D_pos_eta_speed.pdf}\includegraphics[width=.4\textwidth]{D_pos_eta_speed_loglin.pdf}
+  \caption{En fonction de $m$, allure de $\eta_1(m)$ et $\eta_2(m)$ adimensionnés ainsi avec (a) en échelle linéaire et (b) en échelle log--lin en fonction de $\mu=1-m$, allure de $3m(v-1)/(2BH)$.}\label{fig_eta_speed}
+\end{figure}
+
+\subsubsection{Synthèse \boldmath{$D>0$}}
+
+En pratique, on mesure la hauteur $H$ et la période $T^\xi$ ce qui nous permet d'en déduire un certain paramètre $m$ et l'on a alors les relations suivantes
+\begin{align}
+  & T^\xi = 4 \sqrt{\frac{3 D m}{B H}}\ellipK(m),\\
+  & v = 1 + \frac{2BH} {3m} \left[1 - \frac{m}{2} - \frac{3}{2} \frac{\ellipE(m)}{\ellipK(m)}  \right].
+\end{align}
+et le signal est donné par
+\begin{gather}
+  \eta(\xi) = \eta_1 + H \cn^2\left(\left.\frac{\xi}{\Lambda}\right\vert m\right),\\
+  H = \eta_2-\eta_1 >0,\\
+  \eta_1 = \frac{H}{m}\left[1-m-\frac{\ellipE(m)}{\ellipK(m)}\right],\\
+  \eta_2 = \frac{H}{m}\left[1-\frac{\ellipE(m)}{\ellipK(m)}\right],\\
+  \eta_3 = -\frac{H}{m}\frac{\ellipE(m)}{\ellipK(m)},\\
+  \Lambda = 2\sqrt{\frac{3 D m}{BH}}.
+\end{gather}
+Le système autorise bien des solutions subsoniques, pour de petits $m$. On voit en fait en matière de potentiel effectif $W$ que l'on peut bien avoir des solutions de type cnoïdales dans le cas $(1-v)<0$, il suffit de prendre $C_1>0$ proche de zéro pour s'en convaincre graphiquement.
+
+
+
+\subsection{Dispersion négative \boldmath{$(B>0, \; D<0)$ (dépressions a priori subsoniques)}}
+
+On se place désormais dans le cas $(B>0, \; D<0)$ pour lequel on a  $v<1$ pour les solitons en dépression (subsoniques).
+
+Ls choses sont en fait symétriques, on a juste pris l'opposé du cas précédent à cause du signe de $D$ qui devient négatif. Les extrêma locaux sont donc inversés et l'on a
+
+
+
+\medskip
+
+\paragraph{Cas \boldmath{$C_1>0$} à éliminer a priori : } On doit avoir $0<C_1<\dfrac{(v-1)^2}{2B}$ et l'on a
+\begin{gather}
+  \eta_{\max} = \eta_+ <0,\\
+  \eta_{\min} = \eta_-<\eta_+<0.
+\end{gather}
+On pourra osciller entre des valeurs négatives (cf. Fig.~\ref{D_neg_fig_pot_W}\,(a)). Ce n'est pas ce que nous recherchons comme solution. En fait ce cas pourra se traiter pour $v-1>0$ (cf. conclusions)
+
+\begin{figure}[ht!]
+  \centering
+  \quad(a)\hspace*{6cm}(b)
+  
+  \includegraphics[width=.4\textwidth]{pot_W_D_neg_C1_pos.pdf}\includegraphics[width=.4\textwidth]{pot_W_D_neg_C1_neg.pdf}
+  \caption{Notations et allure des potentiels dans le cas $D<0$ et $B>0$, pour (a) $C_1>0$ et (b) $C_1<0$.}\label{D_neg_fig_pot_W}
+\end{figure}
+
+
+
+On va donc dorénavant supposer \fbox{$C_1<0$}. Sous ces conditions, on a 
+\begin{gather}
+  \eta_{\max} = \eta_+ >0,\\
+  \eta_{\min} = \eta_- < 0.
+\end{gather}
+On va choisir $\Ecal_0$ dans l'intervalle $]\Ecal_{\min}, \Ecal_{\max}[$. L'équation $W(\eta) = \Ecal_0$ possède trois solutions $\eta_1<\eta_2<\eta_3$ et l'orbite recherchée sera telle que $\eta\in[\eta_1, \eta_2]$. On doit résoudre l'équation donnée par la quadrature :
+%$
+\begin{equation}
+   \frac 1 2 \left( \frac{\dd \eta}{\dd \xi} \right)^2 = \Ecal_0-W(\eta) \equiv -\frac{B}{6D} (\eta - \eta_1) (\eta - \eta_2) (\eta - \eta_3). \label{eq_energie3}
+\end{equation}
+Par la suite, nous poserons $H=\eta_2-\eta_1$ et le paramétrage elliptique
+\begin{equation}
+  \eta(\xi) = \eta_1 \cos^2\Psi(\xi) +  \eta_2 \sin^2\Psi(\xi) \qquad(=\eta_2 - H\cos^2\Psi=\eta_1+H\sin^2\Psi),
+\end{equation}
+si bien que l'on a \eqref{eq_energie3} qui devient
+\begin{equation}
+   2H^2 \sin^2\Psi \cos^2\Psi \left(\frac{\dd \Psi}{\dd \xi}\right)^2 = +\frac{B}{6D} H^2 \cos^2\Psi \sin^2 \Psi (\eta_3-\eta_1 - H \sin^2\Psi). 
+\end{equation}
+qui se simplifie en
+\begin{equation}
+  \left(\frac{\dd \Psi}{\dd \xi}\right)^2 = -\frac{B}{12D}(\eta_3-\eta_1)(1-m\sin^2\Psi),
+\end{equation}
+en posant
+\begin{equation}
+  \boxed{m = \frac{H}{\eta_3-\eta_1}= \frac{\eta_2-\eta_1}{\eta_3-\eta_1} \quad\in]0,1[}\,.
+\end{equation}
+ce qui donne
+\begin{equation}
+  \xi(\Psi) = \sqrt{\frac{12D}{B (\eta_1-\eta_3)}} \int_0^{\Psi}\frac{\dd \psi}{\sqrt{1 - m\sin^2\psi}}=\sqrt{\frac{12D}{B (\eta_1-\eta_3)}} \ellipF(\Psi\vert m),
+\end{equation}
+avec $\ellipF$ la fonction elliptique incomplète de première espèce. Les fonction cnoïdales se définissent alors comme
+\begin{gather}
+  \cos \Psi(\xi) = \cnoidal {\frac{\xi}{\Lambda}}{m},
+  \qquad
+  \sin \Psi(\xi) = \snoidal {\frac{\xi}{\Lambda}}{m}.
+\end{gather}
+avec
+\begin{gather}
+  \Lambda = 2\sqrt{\frac{3D}{B (\eta_1-\eta_3)}}. \label{def_Lambda_prime}
+\end{gather}
+On obtient in fine
+\begin{gather}
+  \eta(\xi) = \eta_2 - H \cn^2 \left(\left. \frac{\xi}{\Lambda} \right\vert m\right).
+\end{gather}
+
+\paragraph{Période spatiale :} La période spatiale $T^\xi$ est telle que
+\begin{gather}
+  T^\xi = 2 \Lambda F\left(\left.\Psi=\frac{\pi}{2}\right\vert m\right)= 2\Lambda \ellipK(m) = 4 \sqrt{\frac{3D}{B (\eta_1-\eta_3)}}\ellipK(m), \label{expr_Txi2}
+\end{gather}
+où $\ellipK(m)$ désigne la fonction elliptique complète de première espèce.
+
+\paragraph{Condition de moyenne nulle :} On doit avoir encore (sur une demi-période par symétrie)
+\begin{align}
+  \int_0^{\frac12 T^\xi} \eta(\xi) \idd \xi = 0 &=  \int_0^{\frac12 T^\xi} \left[\eta_2-H\cn^2\left(\left.\frac{\xi}{\Lambda}\right\vert m\right)\right] \idd \xi = \int_0^{\pi/2}\left[\eta_2-H\cos^2\Psi\right]\left(\frac{\dd \xi}{\dd \Psi}\right)\idd\Psi\\
+  &=\int_0^{\pi/2}\left[\frac{\eta_3-\frac{H}{m}(1-m\sin^2\Psi)}{\sqrt{1-m\sin^2\Psi}}\right)\idd\Psi=\eta_3\ellipK(m) - \frac{H}{m}\ellipE(m).
+\end{align}
+\paragraph{Synthèse  \boldmath{$D<0$}}
+\begin{gather}
+  \eta_3 = \frac{H}{m}\frac{\ellipE(m)}{\ellipK(m)},\\
+  \eta_1 = \eta_3 - \frac{H}{m} = \frac{H}{m}\left[\frac{\ellipE(m)}{\ellipK(m)}-1\right],\\
+  \eta_2 = H+\eta_1 = \frac{H}{m} \left[m-1+\frac{\ellipE(m)}{\ellipK(m)}\right].
+\end{gather}
+et l'on a donc
+\begin{gather}
+  T^\xi =  4 \sqrt{\frac{-3Dm}{BH}}\ellipK(m), \label{expr_Txi2}\\
+  v=1-\frac{2BH}{3m}\left[1-\frac{m}{2}-\frac{3}{2}\frac{\ellipE(m)}{\ellipK(m)}\right],\\
+  \Lambda = 2\sqrt{\frac{3|D|m}{BH}}\\
+  \eta(\xi) = \eta_2- H \cn^2\left(\left.\frac{\xi}{\Lambda}\right\vert m\right).
+\end{gather}
+Ces relations sont analogues au cas $D>0$, à ceci près que le rapport $3m(v-1)/(2BH)$ est de signe opposé. On a bien des dépressions subsoniques pour $m\to 1$, en revanche, pour $m$ petit, on peut avoir des dépressions supersoniques (cf. Fig.~\ref{fig_eta_speed_D_neg})
+
+\begin{figure}[ht!]
+  \centering
+  \quad(a)\hspace*{6cm}(b)
+  
+  \includegraphics[width=.4\textwidth]{D_neg_eta_speed.pdf}\includegraphics[width=.4\textwidth]{D_neg_eta_speed_loglin.pdf}
+  \caption{En fonction de $m$ ou $\mu=1-m$, allure de $3m(v-1)/(2BH)$ : (a) en échelle linéaire et (b) en échelle log--lin.}\label{fig_eta_speed_D_neg}
+\end{figure}
+
+Enfin, en figure~\ref{fig_4_cnoidales}, on montre une solution sur $2$ périodes spatiales $\Lambda$. 
+
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[width = .4\textwidth]{cnoidal_D=0.1_mu=0.5_H=0.1.pdf}\includegraphics[width = .4\textwidth]{cnoidal_D=0.1_mu=0.005_H=0.1.pdf} 
+
+  \includegraphics[width = .4\textwidth]{cnoidal_D=-0.1_mu=0.5_H=0.1.pdf}\includegraphics[width = .4\textwidth]{cnoidal_D=-0.1_mu=0.005_H=0.1.pdf} 
+  \caption{Allures de solutions cnoidales pour différents $\mu=1-m$ et des $D$ positifs ou négatifs, sur \textcolor{red}{\textbf{$2$~périodes $\Lambda$}}.\textcolor{red}{\bfseries \boldmath{~[Attention, ici $\xi$ vaut $\xi/\Lambda$ !]}}}\label{fig_4_cnoidales}
+\end{figure}
+
+\section{Cas périodique, équation KdV en angle \boldmath{$\theta$}}
+Dans le cas périodique, dans le tore $\Tset^1=\Rset/2\pi\Zset$, l'équation de Korteweg--de Vries pour des ondes se propageant dans le sens direct, sera écrite sous la forme, en variable azimutale
+\begin{equation}
+  \eta_t + \Omega_0\left[ (1 + B\eta) \eta_\theta + D\eta_{\theta\theta\theta}\right]=0. \label{KdVtheta}
+\end{equation}
+En matière de dimension, on a $[B]=L^{-1}$ et $[D]=1$, $D$ ici est donc \textbf{sans dimension}. La période $T^\theta$ devra donc valoir $2\pi/N$ avec $N\in\Nset^*$.
+
+% \clearpage
+
+Pour une solution à \textbf{1 onde solitaire} de hauteur $H>0$ (que ce soit en élévation ou en dépression), on a alors
+\begin{gather}
+  T^\theta =  \frac{2\pi}{N_\theta} = 4 \sqrt{\frac{3|D|m}{BH}}\ellipK(m), \qquad{\text{avec } N_\theta=1}\label{expr_Txi3}\\
+  v=1+\sign(D) \frac{2BH}{3m}\left[1-\frac{m}{2}-\frac{3}{2}\frac{\ellipE(m)}{\ellipK(m)}\right],\label{expr_vmoins1}
+\end{gather}
+où $v$ désigne ici une pulsation angulaire renormalisée par $\Omega_0$.
+\paragraph{Question : }  Que doivent valoir $BH$ et $m$ pour avoir la relation \eqref{expr_Txi3} dans nos expériences ? À $D$ donné, on doit avoir $BH$ « pas trop petit » et $\sqrt{m}\ellipK(m)$ « pas trop grand », sachant que la quantité $\sqrt{m}\ellipK(m)$ diverge lorsque $m\to 1$ et dont l'allure est donnée en figure~\ref{fig:sqrt_m_K_m}.
+
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[height=6cm]{sqrt_m_K_m.pdf}
+  \caption{Allure de la fonction $\sqrt{m}\,\ellipK (m)$.}\label{fig:sqrt_m_K_m}
+\end{figure}
+
+Pour rappel, nous avons dans le cas en V, la relation de dispersion suivante
+\begin{equation}
+  \omega^2(k) = \left[g\eff\frac{k}{R}+\frac{\sigma\eff}{\rho R^3}k^3\right]\Psi\left[A k\right]
+\end{equation}
+avec $A = W R/(2R_c)$, ce  qui donne à l'ordre $k^4$
+\begin{equation}
+  \omega^2(k) = \Omega_0^2 k^2 \left[1 +\left(\frac{\sigma\eff}{\rho g\eff R^2} - \frac{|\Psi'''(0)| A^2}{6}\right)k^2\right] + \grandO(k^6).
+\end{equation}
+avec $\Omega_0^2 = g\eff A/R$.
+On va maintenant s'intéresser à l'équation KdV en $\theta$ suivante
+\begin{equation}
+  0 = \partial_t \eta + \Omega_0 \left[(1+ B \eta_\theta)\eta_\theta +D
+    % -\frac{1}{2}\left(\frac{\sigma\eff}{\rho g\eff R^2} - \frac{|\Psi'''(0)| A^2}{6}\right)
+    \eta_{\theta\theta\theta}\right].
+\end{equation}
+avec
+\begin{equation}
+  D = -\frac{1}{2}\left(\frac{\sigma\eff}{\rho g\eff R^2} - \frac{|\Psi'''(0)|}{6} A^2\right).
+\end{equation}
+et l'on posera $B = \lambda/W$ ($W$ est la longueur naturelle à utiliser ici, et $[B]=L^{-1}$).
+\paragraph{Ordres de grandeur : } $g\eff = 9.81\times\sin(4.5^\circ)\simeq0.77$, $R_c= 0.075$, $\sigma\eff\simeq 0.055$, $R=R_c+W/2$. On considère $\Psi\equiv \tanh$ et donc $|\psi'''(0)|=2$. Pour $W=0.02$, on a $D\simeq -2.1\times 10^{-3}$ et pour $W=0.03$, on a $D\simeq+2.8\times 10^{-3}$.
+
+\clearpage
+\subsection{Exemple de mode 1}
+On va commencer par $T^\xi=2\pi$. On va choisir $m$ proche de $1$ pour être certain d'avoir quelque chose de très creusé. On va considérer qu'on est dans une configuration anti-flaque et que $D<0$. Une illustration est donnée en figure~\ref{fig_cnoidal_N=1}.
+
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[width=0.32\textwidth]{cnoidal_mu=1e-07_N=1.pdf}
+  \includegraphics[width=0.32\textwidth]{Cnoidal_polygon_mu=1e-07_N=1.pdf}
+  \includegraphics[width=0.32\textwidth]{Cosine_polygon_mu=1e-07_N=1.pdf}
+  \caption{Pour $N_\theta=1$, tracé de la cnoïdale et représentation dans l'espace physique. La solution sinusoïdale (à droite) est montrée à titre de comparaison.}\label{fig_cnoidal_N=1}
+\end{figure}
+
+
+
+
+
+\subsection{Exemple de mode polygonal}
+On va maintenant prendre $N>1$ et considérer $T^\xi=2\pi/N$. Une illustration est donnée en figure~\ref{fig_cnoidal_N=5} pour $N=5$.
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[width=0.32\textwidth]{cnoidal_mu=0.5_N=5.pdf}
+  \includegraphics[width=0.32\textwidth]{Cnoidal_polygon_mu=0.5_N=5.pdf}
+  \includegraphics[width=0.32\textwidth]{Cosine_polygon_mu=0.5_N=5.pdf}
+  \caption{Pour $N_\theta=5$, tracé de la cnoïdale et représentation dans l'espace physique. La solution sinusoïdale (à droite) est montrée à titre de comparaison.}\label{fig_cnoidal_N=5}
+\end{figure}
+
+
+\subsection{Commentaires sur les vitesses obtenues}
+
+On obtient alors (cf. fichier \textsf{Octave} associé :  des vitesses qui peuvent être très variables, positives et  négatives \texttt{prefacteur\_vitesse.m} et \texttt{abaques\_vitesses.m}). Pour cela, on part de $D$ et $B$ donnés, on fait varier $m$. On en déduit $H$ et $1-v$ via \eqref{expr_Txi3} et \eqref{expr_vmoins1}\footnote{ \textbf{\sffamily Remarque : } Il faudra reprendre les calculs de Ludu [A. Ludu, A. Raghavendra, \emph{Appl. Num. Math.}, {\bfseries 141}, 167--184 (2019)] et estimer les coefficients $B$ pour voir si l'on peut ou non avoir de telles solutions.}.
+
+Une illustration de cela se trouve en figure~\ref{fig_vitesse_hauteur}. On voit que pour $D>0$, on peut avoir des solutions supersonique en élévation ($m$ petit) mais aussi des solutions subsoniques en élévation ($\mu = 1-m$ petit, i.e. $m$ proche de $1$). On aura l'inverse pour  $D>0$.
+
+
+\clearpage
+
+
+\begin{figure}[ht!]
+  \centering
+  ($D >0 \quad $ \textsf{solitons élévation})
+
+  \smallskip
+  
+  \includegraphics[height = 5cm]{height_H_vs_m_D=+1over6.eps}
+  \qquad
+  \includegraphics[height = 5cm]{Delta_v_vs_m_D=+1over6.eps}
+
+
+  \medskip
+  
+  ($D <0 \quad $ \textsf{solitons dépression})
+
+  \smallskip
+  
+  \includegraphics[height = 5cm]{height_H_vs_m_D=-1over6.eps}
+  \qquad
+  \includegraphics[height = 5cm]{Delta_v_vs_m_D=-1over6.eps}
+  \caption{\textsf{(haut)} Pour $D=+1/6, B=2, N_\theta=1$, tracé de la hauteur $H$ et de $\Delta v = v-1$. \textsf{(bas)} Pour $D=-1/6, B=2, N_\theta=1$, idem, en changeant le signe de la dispersion $D$. Concernant $\Delta v = v-1$, le fait de changer le signe de la dispersion $D$ reviendra à changer le signe de $\Delta v = v-1$.}\label{fig_vitesse_hauteur}
+\end{figure}
+
+
+\subsection{Comparaisons avec les expériences}
+
+Pour un système physique donné (i.e. une plaque donnée et un volume de liquide donné), on se retrouve avec certaines valeurs de $D$ et $B$ donnés.
+
+Ce qu'il faut faire, c'est : pour une série de solitons, mesurer $H$ ainsi que leur profil et leur vitesse qui doivent vérifier
+\begin{gather}
+  \eta(\theta) =  \sign(D) H \cn^2\left(\left. \sqrt{\frac{BH}{12Dm}}\,\theta\, \right\vert m\right) + \text{constante},\label{sol_eq1}\\
+%  \Lambda = 2\sqrt{\frac{3Dm}{BH}}\\
+  v\equiv\frac{\Omega}{\Omega_0}=1+\sign(D) \frac{2BH}{3m}\left[1-\frac{m}{2}-\frac{3}{2}\frac{\ellipE(m)}{\ellipK(m)}\right],\label{sol_eq2}\\
+  2\pi = 4 \sqrt{\frac{3|D|m}{BH}}\ellipK(m), \label{sol_eq3}%\\
+\end{gather}
+sachant que $\Omega_0$ et $D$ sont directement donnés par la relation de dispersion azimutale des ondes variqueuses. De \eqref{sol_eq3}, on déduit la relation
+\begin{equation}
+  BH = \frac{12}{\pi^2}|D| m \left[\ellipK(m)\right]^2,\label{trouver_B}
+\end{equation}
+ce qui entraîne, via \eqref{sol_eq2}, que
+\begin{align}
+  \Delta v (m) \equiv v-1 &=  \sign(D)\frac{2}{3m} \frac{12}{\pi^2}|D| m \ellipK^2(m)\left[1-\frac{m}{2}-\frac{3}{2}\frac{\ellipE(m)}{\ellipK(m)}\right]\\
+  &= \frac{8 D}{\pi^2}\, \textcolor{blue}{\ellipK^2(m)\left[1-\frac{m}{2}-\frac{3}{2}\frac{\ellipE(m)}{\ellipK(m)}\right]}\equiv \frac{8 D}{\pi^2}\,\textcolor{blue}{\Phi(m)}.\label{trouver_m}
+\end{align}
+La figure~\ref{fig:Phi_de_m} donne l'allure de la fonction \textcolor{blue}{$\Phi(m)$} qui est une fonction monotone donc bijective. 
+
+\begin{figure}[ht!]
+  \centering
+
+  \qquad (a)\hspace*{6.5cm}(b)
+
+  \medskip
+  
+  \includegraphics[height=5cm]{linlin_Phi_vs_m.eps}\qquad\includegraphics[height=5cm]{loglin_Phi_vs_m.eps}
+  \caption{Allure de la fonction \textcolor{blue}{$\Phi(m)$} en échelle (a) lin--lin (avec $m$ en abscisse) et (b) log--lin (avec, ici, $\mu = 1- m$ en abscisse).}\label{fig:Phi_de_m}
+\end{figure}
+
+\bigskip
+~
+
+\centerline{\bfseries \sffamily \Large  \textcolor{red}{À comparer maintenant aux expériences : }}
+
+
+\bigskip
+  
+\noindent Méthodologiquement, a priori, ce qu'on doit faire est la chose suivante :
+\begin{enumerate}
+\item Mesurer les rapports de vitesse $v=\Omega/\Omega_0$ et en déduire expérimentalement les valeurs de $m$ via~\eqref{trouver_m} correspondantes.
+\item  Mesurer les hauteurs $H[v(m)]$ correspondantes (en prenant  le maximum moins le minimum des profils reconstruits) et   en déduire  le coefficient $B$, via~\eqref{trouver_B}.
+\item Bien s'assurer que $B$  est constant pour un tore donné.
+\end{enumerate}
+
+% \clearpage
+
+% ~
+\vfill
+
+\noindent\rule{\textwidth}{1pt}
+
+\small\tableofcontents
+
+\medskip
+
+\noindent\rule{\textwidth}{1pt}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
