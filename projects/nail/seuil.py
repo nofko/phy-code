@@ -34,9 +34,17 @@ A = data[1:,2]
 
 plt.errorbar(f,A,yerr=0.05*A,fmt="o",color="b")
 
-plt.xlabel(r"$1/f$ [s]", fontsize=25)
+plt.xlabel(r"$f$ [Hz]", fontsize=25)
 plt.ylabel(r"$B$ [mT]", fontsize=25)
 
 plt.savefig("seuil.pdf",bbox_inches="tight")
+
+plt.figure()
+
+
+fl = np.linspace(0.12,2)
+
+plt.loglog(1/f,A,"o")
+plt.loglog(fl,fl**0.33*9)
 
 plt.show()
