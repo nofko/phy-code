@@ -61,7 +61,7 @@ sigma = 0.055     # SURFACE TENSION
 rho = 1000        # FLUID DENSITY
 
 rc = 0.07         # CENTRAL RADIUS IN M
-ro = 0.09       # TORUS OUTER RADIUS
+ro = 0.078       # TORUS OUTER RADIUS
 w = 2*(ro-rc)     # TORUS WIDTH
 ri =ro-w          # TORUS INNER RADIUS
 
@@ -93,10 +93,10 @@ ax.set_xlabel('$k_1$',fontsize=35)
 ax.set_ylabel('$k_2$',fontsize=35)
 ax.tick_params(labelsize=25)
 
-k3 = 10
+k3 = 40
 
 ax.contour(kk1,kk2,varicose(kk1,w,ro)+varicose(kk2,w,ro)+varicose(k3,w,ro)-varicose(kk1+kk2+k3,w,ro),[0],colors="b")
 
-ax.contour(kk1,kk2,varicose(kk1,w,ro)+varicose(kk2,w,ro)-varicose(k3,w,ro)-varicose(kk1+kk2-k3,w,ro),[0],colors="b")
+ax.contour(kk1,kk2,varicose(kk1,w,ro)+varicose(kk2,w,ro)-varicose(k3,w,ro)-varicose(kk1+kk2-k3,w,ro),[0],colors="r")
 
 plt.show()

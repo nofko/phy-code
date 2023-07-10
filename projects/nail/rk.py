@@ -1,7 +1,5 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import cv2
-import sys
 
 plt.rcParams['text.latex.preamble']=r"\usepackage{lmodern}"
 params = {'text.usetex' : True,'font.family' : 'lmodern','svg.fonttype':'none'}
@@ -17,25 +15,25 @@ plt.rcParams.update(params)
 
 
 N = 100000
-T = 1000
+T = 500
 
 t = np.linspace(0,T,N)
 
 dt = t[1]-t[0]
 
-u = np.array([np.pi-0.1,0.0])
+u = np.array([0.1,0.0])
 
 s = np.zeros((N,2))
 
-omega = 1
-A = 0.0013
+omega = 9
+A = 9
 
 def rhs(t,u):
 
     x1_dot = u[1]
 
-    v1_dot = (A*np.cos(omega*t)-1)*np.sin(u[0])
-    #v1_dot = (A*np.cos(omega*t)*np.sin(u[0])+np.sin(u[0])-u[1]**2*np.cos(u[0])*np.sin(u[0]))/(1/3+np.sin(u[0])**2)
+    #v1_dot = (A*np.cos(omega*t)-1)*np.sin(u[0])
+    v1_dot = (A*np.cos(omega*t)*np.sin(u[0])+np.sin(u[0])-u[1]**2*np.cos(u[0])*np.sin(u[0]))/(1/3+np.sin(u[0])**2)
     
     return np.array([x1_dot,v1_dot])
 
