@@ -25,9 +25,8 @@ plt.rcParams.update(params)
 N = 1000
 L = 10
 T = 1
-T0 = 10
+T0 = 1
 
-dx = L/N
 x = np.linspace(-L/2,L/2,N)
 
 dt = T/N
@@ -35,7 +34,7 @@ t = np.linspace(T0,T+T0,N)
 
 xx,tt = np.meshgrid(x,t)
 
-E = np.linspace(-0.4,-0.01,N,dtype="complex")
+E = np.linspace(-10,-0.01,N,dtype="complex")
 
 
 
@@ -76,11 +75,15 @@ def periodic_kink(mm,v):
 ############################          TRACE        ############################
 
 n = 0
-u,xmax = periodic_kink(0.99999,0.5)
+u, xmax = periodic_kink(0.99,0.5)
+
 dx = xmax/N
 
-ux = np.diff(u[n])/dx
-ut = (u[n+1]-u[n])/dt
+print(dx)
+print(dt)
+
+ux = np.diff(u,axis=1)[n]/dx
+ut = np.diff(u,axis=0)[n]/dt
 
 trace = sg.scatter(u[n],ux,ut,E,dx,dt)
 
@@ -96,9 +99,11 @@ plt.axhline(-1,0,1,ls="--",color="tab:red")
 plt.axvline(0,0,1,ls="--",color="tab:red")
 plt.xlabel("E")
 plt.ylabel("Trace")
+plt.grid()
 
 plt.figure(2)
-plt.plot(u[0,:] , label ='am function')
+plt.plot(u[n,:] , label ='am function')
+plt.plot(u[n+1,:] , label ='am function')
 
 
 plt.show()
