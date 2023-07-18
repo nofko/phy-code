@@ -1,4 +1,31 @@
-from scipy.special import ellipj
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.special import ellipj,ellipk
+from scipy.optimize import bisect
+from scipy.signal import argrelmin,argrelmax
+
+
+import complex_trace as sg
+
+
+plt.rcParams['text.latex.preamble']=r"\usepackage{lmodern}"
+params = {'text.usetex' : True,'font.family' : 'lmodern','svg.fonttype':'none'}
+plt.rcParams.update(params)
+
+
+
+## ============================================================================
+## SINE-GORDON DIRECT SCATTERING                                             ##
+##                                                                           ##
+##                          SINE-GORDON COMPLEX TRACE                        ##
+##                                                                           ##
+## ============================================================================
+
+
+
+
+############################          SETUP        ############################
+
 
 N = 1000
 L = 60
@@ -15,9 +42,13 @@ xx,tt = np.meshgrid(x,t)
 Nr = 400
 Ni = 400
 
-Er = np.linspace(0.01,1.2,Nr,dtype="complex")
+Er = np.linspace(-1,-0.01,Nr,dtype="complex")
 
-Ei = np.linspace(0.01,1.2,Ni,dtype="complex")*1j
+Ei = np.linspace(0.01,1,Ni,dtype="complex")*1j
+
+
+
+############################          FUNCS        ############################
 
 
 def breather(mu,t0):
@@ -47,100 +78,64 @@ def wave(alpha,A):
 
     return u
 
+def sine(a,k,omega):
 
-def linlogscalar(y):
-    """Scaling of a scalar value - linear between +-1 and log outside"""
-    
-    if np.abs(y)<=1:
-        return(y)
-            
-    else:
-        return np.sign(y)*(1+np.log(np.abs(y)))
-
-
-def B(eta,etax,etat,e):
-    """Calculation of monodromy matrix for given values of the signal, derivative in x and t and for a given energy"""
-    
-    Mi = np.identity(2,dtype="complex")
-    Mi1 = np.identity(2,dtype="complex")
-    m = np.identity(2,dtype="complex")
+    return a*np.sin(k*xx-omega*tt)
     
 
-    w = etax-etat[:-1]
-    #er =1/(err.real**2+err.imag**2)*(err.real-1j*err.imag)
-    
-    for i in range(N-1):
-    
-        
+############################          TRACE        ############################
 
-        e11 = np.cos(dx)+1j*np.sin(dx)*(np.sqrt(e)/2-np.cos(eta[i])/8/np.sqrt(e))
-        e22 = np.cos(dx)-1j*np.sin(dx)*(np.sqrt(e)/2-np.cos(eta[i])/8/np.sqrt(e))
-
-        e12 = 1j*np.sin(dx)*((w[i])/4+1j*np.sin(eta[i])/8/np.sqrt(e))
-        e21 = 1j*np.sin(dx)*((w[i])/4-1j*np.sin(eta[i])/8/np.sqrt(e))
-        
-        m = np.array([[e11,e12],[e21,e22]])
-
-        #m = linalg.expm(dx*A)
-
-        Mi1 = Mi
-        Mi = np.matmul(m,Mi)
-    
-    return Mi
-
-
-def scatter(u,ux,ut):
-    """Scattering of a given signal over a mesh of energies - returns the trace of the monodromy matrix for a given 
-    range of energies on the mesh"""
-
-    M = np.zeros((N,2,2),dtype="complex")
-
-    tr = np.zeros((Nr,Ni),dtype="complex")
-
-    for j in range(Ni):
-
-        print(j/Ni)
-
-        for k in range(Nr):
-
-            Mi = B(u[:-1],ux,ut,Er[k]+Ei[j])
-    
-            tr[k,j] = np.trace(Mi)
-
-    return tr
-
-
-def linlogmat(y):
-    """Scaling of a matrix - linear between +-1 and log outside"""
-    
-    Nx,Ny = y.shape
-    out = np.zeros((Nx,Ny))
-
-    for i in range(Nx):
-        
-        for j in range(Ny):
-            
-            if np.abs(y[i,j])<=1:
-                out[i,j] = y[i,j]
-            
-            else:
-                out[i,j] = np.sign(y[i,j])*(1+np.log(np.abs(y[i,j])))
-
-    return out
 
 n = 100
 
-u = wave(np.pi/4,1)
+save = 1
+
+#u = wave(np.pi/4,1)
+
+u = sine(0.01,2,1)
 
 ux = np.diff(u[n])/dx
 ut = (u[n+1]-u[n])/dt
 
-trace = scatter(u[n],ux,ut)
+print("CALCULATING THE TRACE")
+
+trace = sg.scatter(u[n],ux,ut,Er,Ei,dx,dt)
+
+
+
+############################          SAVE         ############################
+
+
+print("SAVING DATA")
+
+
+if save == 1:
+    
+    name = "sine_A_0.01_k_2_om_1"
+    wave = "sine"
+
+    np.save("/data/sg/"+wave+"/x_"+name+"_neg.npy", x)
+    np.save("/data/sg/"+wave+"/eta_"+name+"_neg.npy", u)
+
+    np.save("/data/sg/"+wave+"/Er_"+name+"_neg.npy", Er)
+    np.save("/data/sg/"+wave+"/Ei_"+name+"_neg.npy", Ei)
+    np.save("/data/sg/"+wave+"/trace_"+name+"_neg.npy", trace)
+
+
+############################          PLOT         ############################
 
 plt.figure()
-plt.pcolormesh(Er.real,Ei.imag,linlogmat(np.transpose(trace.real)))
+plt.plot(x,u[n])
+
+
+
+plt.figure()
+plt.pcolormesh(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.real)))
 plt.title(r"$\Re(trM)$")
 
 plt.figure()
-plt.pcolormesh(Er.real,Ei.imag,linlogmat(np.transpose(trace.imag)))
+plt.pcolormesh(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.imag)))
 plt.title(r"$\Im(trM)$")
+
+
+plt.show()

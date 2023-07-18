@@ -1,4 +1,5 @@
 import numpy as np
+import sys
 
 ## ============================================================================
 ## SINE-GORDON DIRECT SCATTERING                                             ##
@@ -50,6 +51,7 @@ def B(eta,etax,etat,e,dx,dt):
 
         Mi1 = Mi
         Mi = np.matmul(m,Mi)
+
     
     return Mi
 
@@ -62,7 +64,8 @@ def scatter(u,ux,ut,E,dx,dt):
 
     for j in range(N-1):
 
-        print(j/N)
+        sys.stdout.flush()
+        sys.stdout.write("Progress: "+str(int(100*j/(N-1)))+" %\r")
 
         Mi = B(u,ux,ut,E[j],dx,dt)
     

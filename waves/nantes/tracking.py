@@ -22,7 +22,7 @@ plt.rcParams.update(params)
 def gray(image):
     return image[:, :, 0]  # Take just the green channel
 
-frames = gray(pims.open('test/*.JPG'))
+frames = gray(pims.open('/data/nantes/DCIM/test/*.JPG'))
 
 f = tp.batch(frames, 11,
               threshold = 30,
