@@ -128,7 +128,6 @@ plt.figure()
 plt.plot(x,u[n])
 
 
-
 plt.figure()
 plt.pcolormesh(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.real)))
 plt.title(r"$\Re(trM)$")
