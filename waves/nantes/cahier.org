@@ -1,0 +1,15 @@
+#+title: "Notes for tracking"
+#+author: "nofko"
+
+
+* JOURNAL
+
+** 8.9.2023 
+
+   Popravio traackpy tako da malo bolje lovi kuglice. Bitno je podesiti
+   diameter (prije je bio 11, sad je 105) i to sad odgovara vise pixel
+   velicini velikih kuglica. Cini se da ih bolje vidi, ali je znatno sporiji.
+   U mass histogramu se lijepo vidi razlika izmedu dviju tipa kuglica sto je
+   korisno.
+
+   Pogledat deeptrack i je li brzi.

@@ -503,7 +503,7 @@ class torus:
 
 
 
-fname = "/data/torus_wt/02_23/21_02/bruitCTP_6_9hz_7min_A1000.mp4"
+fname = "/data/torus_wt/09_23/11_09/Basler_acA2040-120um__23597830__20230712_050657186.mp4"
 
 
 sin = torus(fname,1,550,750)

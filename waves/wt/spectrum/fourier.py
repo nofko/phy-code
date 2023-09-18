@@ -56,14 +56,17 @@ om0 = 7.14*2*np.pi#44.5
 
 path = "/data/torus_mi/29_9_2022/7_9hz/7_9Hz_4min_750.npy"
 path = "/data/torus_mi/10_5_2022/sweep/Basler_acA2040-120um__23597830__20220510_122929533.npy"
-path = "/data/torus_wt/02_23/17_02/bruitCTP_2_5hz_7min_A1000.npy"
+path = "/data/torus_wt/09_23/11_09/Basler_acA2040-120um__23597830__20230712_050657186.npy"
 
 
 fps = 120
 
 signal = np.load(path,allow_pickle=True)
-signal = np.roll(signal,-400)
-#signal = signal[:, 500:]
+signal = np.roll(signal,-900)
+signal = signal[:, 200:]
+
+#plt.plot(signal[1000])
+
 #signal = np.pad(signal,[(250,250),(0,0)])
 
 #signal = np.array([np.convolve(j, np.ones(200), "valid") / 200 for j in signal])
@@ -108,7 +111,7 @@ fig, ax = plt.subplots(figsize=[12,9])
 #four = ax.pcolormesh(k,om/2/np.pi,np.log(np.abs(ff2[:omax,:kmax])),rasterized=True,cmap="turbo",vmin=13,vmax=19)
 four = ax.imshow(np.log(np.abs(ff2[:omax,:kmax]))[::-1,:],
                  cmap="turbo",extent=[k[0],k[-1],om[0],om[-1]],
-                 aspect="auto",vmin=8,vmax=17,)
+                 aspect="auto",vmin=8,vmax=17,interpolation="none")
 #ax.plot(k,varicose(k,w,ro),"w",lw=2)
 
 #delta = 5

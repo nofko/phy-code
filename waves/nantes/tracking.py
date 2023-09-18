@@ -22,24 +22,35 @@ plt.rcParams.update(params)
 def gray(image):
     return image[:, :, 0]  # Take just the green channel
 
-frames = gray(pims.open('/data/nantes/DCIM/test/*.JPG'))
+frames = gray(pims.open('/data/nantes/DCIM/run2_300/*.JPG'))
 
-f = tp.batch(frames, 11,
+
+f = tp.batch(frames, 105,
               threshold = 30,
-              minmass = 100,
-              maxsize = 50,
+              minmass = 50,
+              maxsize = 140,
               invert=False,
-              percentile=70,
-              topn = 200)
+              #percentile=70,
+              #topn = 30
+              )
+
+tp.annotate(f, frames[0]);
 
 
 
-t = tp.link(f, 100, memory=2)
+fig, ax = plt.subplots()
+ax.hist(f['size'], bins=20)
+
+# Optionally, label the axes.
+ax.set(xlabel='mass', ylabel='count');
+
+
+
+t = tp.link(f, 50, memory=3)
 
 
 t1 = tp.filter_stubs(t, 3)
 
-1
 plt.figure()
 tp.plot_traj(t);
 
@@ -59,6 +70,14 @@ ax.set(ylabel=r'$\langle \Delta r^2 \rangle$ [$\mu$m$^2$]',
 ax.set_xscale('log')
 ax.set_yscale('log')
 
+
+em = tp.emsd(tm, 1, 24)
+
+
+plt.figure()
+plt.ylabel(r'$\langle \Delta r^2 \rangle$ [$\mu$m$^2$]')
+plt.xlabel('lag time $t$');
+#tp.utils.fit_powerlaw(em) 
 
 
 # em = tp.emsd(tm, 1, 10) 
