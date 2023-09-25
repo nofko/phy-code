@@ -41,12 +41,12 @@ def sinuous(k,w,ri):
 
 g = np.sin(4.5*np.pi/180)*9.81
 
-sigma = 0.063
+sigma = 0.05
 rho = 1000
 
-rc = 0.07
-ro = 0.0785
-w = 2*(ro-rc)
+rc = 0.095
+ro = 0.08
+w = (rc-ro)
 ri =ro-w
 
 om0 = 7.14*2*np.pi#44.5
@@ -56,16 +56,23 @@ om0 = 7.14*2*np.pi#44.5
 
 path = "/data/torus_mi/29_9_2022/7_9hz/7_9Hz_4min_750.npy"
 path = "/data/torus_mi/10_5_2022/sweep/Basler_acA2040-120um__23597830__20220510_122929533.npy"
-path = "/data/torus_wt/09_23/11_09/Basler_acA2040-120um__23597830__20230712_050657186.npy"
+path = "/data/torus_wt/09_23/22_09/Basler_acA2040-120um__23597830__20230922_095128310.npy"
 
 
-fps = 120
+fps = 100
 
 signal = np.load(path,allow_pickle=True)
-signal = np.roll(signal,-900)
-signal = signal[:, 200:]
+signal = np.roll(signal,900)
+signal = signal[:, 120:-300]
 
-#plt.plot(signal[1000])
+w = 15
+
+
+#np.convolve(signal, np.ones(w), 'valid',axis=0) / w
+
+signal = np.apply_along_axis(lambda m: np.convolve(m, np.ones(w), 'valid')/w, axis=1, arr=signal)
+
+plt.plot(signal[1000])
 
 #signal = np.pad(signal,[(250,250),(0,0)])
 
@@ -94,11 +101,11 @@ del(signal)
 
 numFrames=len(ff2)
 
-kmax = 180 
+kmax = 180
 omax = int((NS-1)/2)+6000
 
 om = np.arange(0,omax)*fps/numFrames
-k = (np.arange(0,kmax))
+k = (np.arange(0,100))
 
 #plt.figure()
 #plt.plot(om,np.sum(np.log(np.abs(ff2[:omax,:kmax])),axis=1))
@@ -110,15 +117,16 @@ fig, ax = plt.subplots(figsize=[12,9])
 
 #four = ax.pcolormesh(k,om/2/np.pi,np.log(np.abs(ff2[:omax,:kmax])),rasterized=True,cmap="turbo",vmin=13,vmax=19)
 four = ax.imshow(np.log(np.abs(ff2[:omax,:kmax]))[::-1,:],
-                 cmap="turbo",extent=[k[0],k[-1],om[0],om[-1]],
+                 cmap="turbo",extent=[k[0],kmax,om[0],om[-1]],
                  aspect="auto",vmin=8,vmax=17,interpolation="none")
-#ax.plot(k,varicose(k,w,ro),"w",lw=2)
+
+#ax.plot(k,varicose(k,w,ro)/2/np.pi,"w",lw=2)
 
 #delta = 5
 #ax.plot(k,varicose(k,w,ro)+delta,"--w",lw=2)
 #ax.plot(k,varicose(k,w,ro)-delta,"--w",lw=2)
 
-#ax.plot(k,varicose_N(k,w,ro,2),"w",lw=2)
+# ax.plot(k,varicose_N(k,w,ro,2)/2/np.pi,"w",lw=2)
 #ax.plot(k,varicose_N(k,w,ro,3),"w",lw=2)
 
 cbar = plt.colorbar(four,format="%1.1f",ax=ax)

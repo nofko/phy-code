@@ -57,15 +57,15 @@ def phase_var(k,w,ro):
 
 g = np.sin(4.5*np.pi/180)*9.81
 
-sigma = 0.055     # SURFACE TENSION
+sigma = 0.074     # SURFACE TENSION
 rho = 1000        # FLUID DENSITY
 
-rc = 0.07         # CENTRAL RADIUS IN M
-ro = 0.09       # TORUS OUTER RADIUS
+rc = 0.095         # CENTRAL RADIUS IN M
+ro = 0.08       # TORUS OUTER RADIUS
 w = 2*(ro-rc)     # TORUS WIDTH
 ri =ro-w          # TORUS INNER RADIUS
 
-q = 1             # DISPERSION RELATION WIDTH
+q = 4             # DISPERSION RELATION WIDTH
 
 #om0 = 42.4  # R=7.9  # CUTOFF FREQUENCY OF SLOSHING BRANCH IN RAD/S
 om0 = 44.5   # R=8.1
@@ -105,6 +105,8 @@ k3 = 30
 
 
 ax.contour(kk1,kk2,varicose(kk1,w,ro)+varicose(kk2,w,ro)-varicose(kk1+kk2,w,ro),[0],colors="b")
+ax.contour(kk1,kk2,varicose(kk1,w,ro)+varicose(kk2,w,ro)-varicose(kk1+kk2,w,ro)+q,[0],colors="b")
+ax.contour(kk1,kk2,varicose(kk1,w,ro)+varicose(kk2,w,ro)-varicose(kk1+kk2,w,ro)-q,[0],colors="b")
 
 #ax.contour(kk1,kk2,varicose(kk1,w,ro)+sloshing(kk2,om0)-varicose(kk1+kk2,w,ro),[0],colors="b")
 #ax.contour(kk1,kk2,varicose(kk1,w,ro)-varicose(kk2,w,ro)+varicose(kk1-kk2,w,ro),[0],colors="b")

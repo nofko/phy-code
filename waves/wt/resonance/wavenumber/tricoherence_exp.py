@@ -26,7 +26,7 @@ print("")
 path = "/data/torus_mi/5_5_2022/bruitCTP_5_7hz_15min_A1100.npy"
 path = "/data/torus_mi/29_9_2022/7_9hz/7_9Hz_4min_600.npy"
 path = "/data/torus_wt/12_22/7_12/7_7Hz_A900.npy"
-path = "/data/torus_wt/02_23/17_02/bruitCTP_2_5hz_7min_A1000.npy"
+path = "/data/torus_wt/09_23/21_09/Basler_acA2040-120um__23597830__20230920_213925713.npy"
 
 S = np.load(path)
 
@@ -36,8 +36,9 @@ S = np.load(path)
 #S = np.roll(S,-2730)
 #S = S[:, 500:3000]
 
-S = np.roll(S,-810)
-S = S[:, 250:]
+S = np.roll(S,900)
+S = S[:, :-270]
+
 #S = np.pad(S,[(250,250),(0,0)])
 
 plt.plot(S[1500])
@@ -70,12 +71,12 @@ def sloshing(k,om0):
 
 g = np.sin(4.5*np.pi/180)*9.81
 
-sigma = 0.055     # SURFACE TENSION
+sigma = 0.074     # SURFACE TENSION
 rho = 1000        # FLUID DENSITY
 
-rc = 0.07         # CENTRAL RADIUS IN M
-ro = 0.0785       # TORUS OUTER RADIUS
-w = 2*(ro-rc)     # TORUS WIDTH
+rc = 0.095         # CENTRAL RADIUS IN M
+ro = 0.08       # TORUS OUTER RADIUS
+w = 2*(rc-ro)     # TORUS WIDTH
 ri =ro-w          # TORUS INNER RADIUS
 
 q = 1             # DISPERSION RELATION WIDTH
@@ -116,17 +117,17 @@ B = np.zeros((NB,NB))
 
 nb = int(NB/2)
 
-k3 = 30
+k3 = 20
 
-# for k1 in range(-nb,nb):
-#     print((k1+nb)/NB)
-#     for k2 in range(-nb,nb):
+for k1 in range(-nb,nb):
+    print((k1+nb)/NB)
+    for k2 in range(-nb,nb):
         
-#         N = np.sqrt(np.mean(np.abs(FF[:,K0+k1]*FF[:,K0+k2]*FF[:,K0+k3])**2)*np.mean(np.abs(FF[:,K0+k1+k2-k3])**2))
+        N = np.sqrt(np.mean(np.abs(FF[:,K0+k1]*FF[:,K0+k2])**2)*np.mean(np.abs(FF[:,K0+k3]*FF[:,K0+k1+k2-k3])**2))
         
-#         B[k1+nb,k2+nb] = np.abs(np.mean(np.conjugate(FF[:,K0+k1]*FF[:,K0+k2]*FF[:,K0+k3])*FF[:,K0+k1+k2+k3]))/N
+        B[k1+nb,k2+nb] = np.abs(np.mean(np.conjugate(FF[:,K0+k1]*FF[:,K0+k2])*FF[:,K0+k3]*FF[:,K0+k1+k2+k3]))/N
 
-# nn = int(len(FF[0])/2)
+nn = int(len(FF[0])/2)
 
 # for k1 in range(NB):
 #     print((k1)/NB)
@@ -157,7 +158,7 @@ del(FF)
 print("-- DONE!")
 
 
-k = np.linspace(0,NB,NB)
+k = np.linspace(-nb,nb,NB)
 
 fig, ax = plt.subplots(figsize=[12,9])
 
@@ -178,9 +179,9 @@ delta = 4
 
 kk1,kk2 = np.meshgrid(k1,k2)
 
-# ax.contour(kk1,kk2,varicose(kk1,w,ro)+varicose(kk2,w,ro)+varicose(k3,w,ro)-varicose(kk1+kk2+k3,w,ro),[0],colors="k")
+ax.contour(kk1,kk2,varicose(kk1,w,ro)+varicose(kk2,w,ro)+varicose(k3,w,ro)-varicose(kk1+kk2+k3,w,ro),[0],colors="k")
 
-# ax.contour(kk1,kk2,varicose(kk1,w,ro)+varicose(kk2,w,ro)-varicose(k3,w,ro)-varicose(kk1+kk2-k3,w,ro),[0],colors="k")
+ax.contour(kk1,kk2,varicose(kk1,w,ro)+varicose(kk2,w,ro)-varicose(k3,w,ro)-varicose(kk1+kk2-k3,w,ro),[0],colors="k")
 
 # ax.contour(kk1,kk2,varicose(kk1,w,ro)+varicose(kk2,w,ro)-varicose(k3,w,ro)-varicose(kk1+kk2-k3,w,ro)+delta,[0],colors="k")
 

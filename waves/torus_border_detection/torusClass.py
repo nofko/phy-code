@@ -155,7 +155,7 @@ class torus:
         circ=np.where(circ>self.seuil,255,0)
         circ=circ.astype(np.uint8)
 
-        rot_rectangle = ((870, 1300), (80, 260), -11)
+        rot_rectangle = ((760, 150), (190, 260), 0)
 
         box = cv2.boxPoints(rot_rectangle) 
         box = np.int0(box)
@@ -503,10 +503,10 @@ class torus:
 
 
 
-fname = "/data/torus_wt/09_23/11_09/Basler_acA2040-120um__23597830__20230712_050657186.mp4"
+fname = "/data/torus_wt/09_23/22_09/Basler_acA2040-120um__23597830__20230922_103544711.mp4"
 
 
-sin = torus(fname,1,550,750)
+sin = torus(fname,1,580,750)
 
 print("Opening video...")
 sin.openVideo()

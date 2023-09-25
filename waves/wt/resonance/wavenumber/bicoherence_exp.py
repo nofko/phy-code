@@ -25,7 +25,7 @@ print("")
 
 path = "/data/torus_mi/5_5_2022/bruitCTP_5_7hz_15min_A1100.npy"
 path = "/data/torus_mi/29_9_2022/7_9hz/7_9Hz_4min_600.npy"
-path = "/data/torus_wt/02_23/17_02/bruitCTP_2_5hz_7min_A1000.npy"
+path = "/data/torus_wt/09_23/21_09/Basler_acA2040-120um__23597830__20230920_205359945.npy"
 
 S = np.load(path)
 
@@ -35,8 +35,9 @@ S = np.load(path)
 # S = np.roll(S,-2730)
 # S = S[:, 500:]
 
-S = np.roll(S,-400)
-S = S[:, 500:]
+S = np.roll(S,900)
+S = S[:, :-270]
+
 
 #S = np.pad(S,[(250,250),(0,0)])
 
