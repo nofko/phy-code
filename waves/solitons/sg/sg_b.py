@@ -28,7 +28,7 @@ plt.rcParams.update(params)
 
 
 N = 1000
-L = 60
+L = 40
 T = 1
 
 dx = L/N
@@ -39,12 +39,12 @@ t = np.linspace(0,T,N)
 
 xx,tt = np.meshgrid(x,t)
 
-Nr = 400
-Ni = 400
+Nr = 100
+Ni = 100
 
-Er = np.linspace(-1,-0.01,Nr,dtype="complex")
+Er = np.linspace(-0.1,-0.06,Nr,dtype="complex")
 
-Ei = np.linspace(0.01,1,Ni,dtype="complex")*1j
+Ei = np.linspace(0.22,0.25,Ni,dtype="complex")*1j
 
 
 
@@ -92,7 +92,9 @@ save = 1
 
 #u = wave(np.pi/4,1)
 
-u = sine(0.01,2,1)
+#u = sine(0.01,2,1)
+
+u = breather(np.pi/3,1)
 
 ux = np.diff(u[n])/dx
 ut = (u[n+1]-u[n])/dt
@@ -111,8 +113,8 @@ print("SAVING DATA")
 
 if save == 1:
     
-    name = "sine_A_0.01_k_2_om_1"
-    wave = "sine"
+    name = "breather_new"
+    wave = "breather"
 
     np.save("/data/sg/"+wave+"/x_"+name+"_neg.npy", x)
     np.save("/data/sg/"+wave+"/eta_"+name+"_neg.npy", u)
@@ -129,12 +131,25 @@ plt.plot(x,u[n])
 
 
 plt.figure()
-plt.pcolormesh(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.real)))
+plt.pcolormesh(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.real-2)))
 plt.title(r"$\Re(trM)$")
+plt.colorbar()
 
 plt.figure()
 plt.pcolormesh(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.imag)))
 plt.title(r"$\Im(trM)$")
+plt.colorbar()
 
+plt.figure()
+plt.pcolormesh(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.real-2)))
+plt.title(r"$\Re(trM)$")
+plt.colorbar()
+plt.contour(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.real-2)))
+
+plt.figure()
+plt.pcolormesh(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.imag)))
+plt.title(r"$\Im(trM)$")
+plt.colorbar()
+plt.contour(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.imag)))
 
 plt.show()

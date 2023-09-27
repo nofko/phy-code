@@ -59,20 +59,19 @@ def B(eta,etax,etat,e,dx,dt):
 def scatter(u,ux,ut,E,dx,dt):
 
     N = len(u)
+    Ne = len(E)
     
-    M = np.zeros((N,2,2),dtype="complex")
+    M = np.zeros((Ne,2,2),dtype="complex")
 
-    for j in range(N-1):
+    for j in range(Ne):
 
         sys.stdout.flush()
-        sys.stdout.write("Progress: "+str(int(100*j/(N-1)))+" %\r")
+        sys.stdout.write("Progress: "+str(int(100*j/(Ne-1)))+" %\r")
 
         Mi = B(u,ux,ut,E[j],dx,dt)
     
         M[j] = Mi
 
     trM = np.trace(M,axis1=1,axis2=2)
-        
-    trace = linlog(trM.real/2)
-
-    return trace
+            
+    return trM
