@@ -39,12 +39,12 @@ t = np.linspace(0,T,N)
 
 xx,tt = np.meshgrid(x,t)
 
-Nr = 100
-Ni = 100
+Nr = 400
+Ni = 400
 
-Er = np.linspace(-0.1,-0.06,Nr,dtype="complex")
+Er = np.linspace(-0.4,-0.01,Nr,dtype="complex")
 
-Ei = np.linspace(0.22,0.25,Ni,dtype="complex")*1j
+Ei = np.linspace(-0.5,0.5,Ni,dtype="complex")*1j
 
 
 
@@ -113,7 +113,7 @@ print("SAVING DATA")
 
 if save == 1:
     
-    name = "breather_new"
+    name = "breather_pi-3"
     wave = "breather"
 
     np.save("/data/sg/"+wave+"/x_"+name+"_neg.npy", x)
@@ -130,26 +130,30 @@ plt.figure()
 plt.plot(x,u[n])
 
 
-plt.figure()
-plt.pcolormesh(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.real-2)))
-plt.title(r"$\Re(trM)$")
-plt.colorbar()
-
-plt.figure()
-plt.pcolormesh(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.imag)))
-plt.title(r"$\Im(trM)$")
-plt.colorbar()
 
 plt.figure()
 plt.pcolormesh(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.real-2)))
 plt.title(r"$\Re(trM)$")
 plt.colorbar()
 plt.contour(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.real-2)))
+plt.savefig("re.pdf", bbox_inches="tight")
 
 plt.figure()
 plt.pcolormesh(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.imag)))
 plt.title(r"$\Im(trM)$")
 plt.colorbar()
 plt.contour(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.imag)))
+plt.savefig("im.pdf", bbox_inches="tight")
+
+
+
+G = (np.abs(trace)-2)**2+trace.imag**2
+
+plt.figure()
+plt.pcolormesh(Er.real,Ei.imag,sg.linlogmat(np.transpose(G)))
+plt.title(r"$(|\Re(trM)|-2)^2+\Im(trM)^2$")
+plt.colorbar()
+plt.contour(Er.real,Ei.imag,sg.linlogmat(np.transpose(G)))
+plt.savefig("G.pdf", bbox_inches="tight")
 
 plt.show()
