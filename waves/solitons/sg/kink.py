@@ -32,11 +32,17 @@ N = 1000
 T = 1
 T0 = 1
 
+L = 15
+
 dt = T/N
 t = np.linspace(T0,T+T0,N)
 
+x = np.linspace(-L/2,L/2,N)
+dx = abs(x[1]-x[0])
 
-E = np.linspace(-6,-0.01,N,dtype="complex")
+xx,tt = np.meshgrid(x,t)
+
+E = np.linspace(-2,-0.01,N,dtype="complex")
 
 
 ############################          FUNCS        ############################
@@ -75,18 +81,20 @@ def periodic_kink(mm,v,NN):
 
 ############################          TRACE        ############################
 
-save = 1
+save = 0
 
 n = 0
 
 m = 0.8
 V = 0.3
 
-u, xmax = periodic_kink(m,V,5)
+u = kink(1)
 
-dx = xmax/N
+# u, xmax = periodic_kink(m,V,5)
 
-x = np.linspace(0,xmax,N)
+# dx = xmax/N
+
+# x = np.linspace(0,xmax,N)
 
 ux = np.diff(u,axis=1)[n]/dx
 ut = np.diff(u,axis=0)[n]/dt
@@ -128,9 +136,9 @@ def find_zeros(E,trace):
 
     Eigs_plus = []
     Eigs_minus = []
-
-    mins = argrelmin(trace)[0]
-    maxs = np.concatenate(([int(mins[0]/2)],argrelmax(trace)[0]))
+    
+    mins = argrelmin(sg.linlog(trace.real))[0]
+    maxs = np.concatenate(([int(mins[0]/2)],argrelmax(sg.linlog(trace.real))[0]))
 
 
     Emaxs = E[maxs]
@@ -199,7 +207,7 @@ print("PLOT")
 
 plt.figure()
 plt.title("Trace")
-plt.plot(E.real,trace)
+plt.plot(E.real,sg.linlog(trace.real))
 plt.axhline(1,0,1,ls="--",color="tab:red")
 plt.axhline(-1,0,1,ls="--",color="tab:red")
 plt.axvline(0,0,1,ls="--",color="tab:red")
@@ -207,8 +215,8 @@ plt.xlabel("E")
 plt.ylabel("Trace")
 plt.grid()
 
-plt.scatter(Epls,np.ones_like(Epls))
-plt.scatter(Emns,-np.ones_like(Emns))
+# plt.scatter(Epls,np.ones_like(Epls))
+# plt.scatter(Emns,-np.ones_like(Emns))
 
 plt.figure()
 plt.plot(x,u[n])

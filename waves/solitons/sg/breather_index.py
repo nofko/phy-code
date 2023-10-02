@@ -42,11 +42,11 @@ xx,tt = np.meshgrid(x,t)
 Nr = 1000
 Ni = 1000
 
-Emin_x = -0.24
-Emax_x = -0.05
+Emin_x = -0.26
+Emax_x = -0.01
 
 Emin_y = 0.05
-Emax_y = 0.24
+Emax_y = 0.26
 
 dEx = abs(Emax_x-Emin_x)/Nr
 dEy = abs(Emax_y-Emin_y)/Ni
@@ -141,8 +141,8 @@ save = 0
 
 #u = sine(0.01,2,1)
 
-u = breather(np.pi/3,1,-10)
-u += breather(np.pi/3+0.01,1,10)
+u = breather(np.pi/3,1,0)
+#u += breather(np.pi/3+0.01,1,10)
 
 ux = np.diff(u[n])/dx
 ut = (u[n+1]-u[n])/dt
