@@ -103,6 +103,8 @@ print("CALCULATING THE TRACE")
 
 trace = sg.scatter(u[n],ux,ut,E,dx,dt)
 
+print(argrelmin(sg.linlog(trace.real)))
+print(trace.real)
 
 ############################          ZEROS        ############################
 
@@ -174,7 +176,7 @@ def find_zeros(E,trace):
 
 
 print("FINDING ZEROS NOW")
-Epls, Emns = find_zeros(E.real,trace)
+Epls, Emns = find_zeros(E.real,trace.real)
 
 print("+1 eigenvalues: ", Epls)
 print("-1 eigenvalues: ", Emns)

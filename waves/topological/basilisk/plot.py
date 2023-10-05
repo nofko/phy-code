@@ -3,9 +3,9 @@ import numpy as np
 
 
 
-data = np.genfromtxt("out_f")
+data = np.genfromtxt("out")
 
-data = data 
+#data = data 
 
 #data = data[1900:4000]
 
@@ -20,14 +20,14 @@ steep = np.mean(np.sqrt(1/4*(np.sum(np.diff(data[2000:,:680],axis=1)**2/dx,axis=
 
 print(steep)
 
-plt.imshow(data)
-
-#plt.plot(x,np.max(data,axis=0))
 #plt.imshow(data)
 
-#plt.plot(x,data[0])
-#plt.plot(x,data[50])
-#plt.plot(x,data[1000]*1000)
+plt.plot(x,np.max(data,axis=0))
+#plt.imshow(data)
+
+plt.plot(x,data[0])
+plt.plot(x,data[50])
+plt.plot(x,data[1000])
 
 
 plt.xlabel("$x$ [m]")
