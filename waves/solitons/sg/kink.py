@@ -217,8 +217,8 @@ plt.xlabel("E")
 plt.ylabel("Trace")
 plt.grid()
 
-plt.scatter(Epls,np.ones_like(Epls))
-plt.scatter(Emns,-np.ones_like(Emns))
+# plt.scatter(Epls,np.ones_like(Epls))
+# plt.scatter(Emns,-np.ones_like(Emns))
 
 plt.figure()
 plt.plot(x,u[n])
