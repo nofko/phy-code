@@ -28,7 +28,7 @@ plt.rcParams.update(params)
 
 
 N = 1000
-L = 40
+L = 60
 T = 1
 
 dx = L/N
@@ -39,25 +39,25 @@ t = np.linspace(0,T,N)
 
 xx,tt = np.meshgrid(x,t)
 
-Nr = 100
-Ni = 100
+Nr = 400
+Ni = 400
 
-Er = np.linspace(-0.1,-0.06,Nr,dtype="complex")
+Er = np.linspace(-0.3,-0.01,Nr,dtype="complex")
 
-Ei = np.linspace(0.22,0.25,Ni,dtype="complex")*1j
+Ei = np.linspace(-0.3,0.3,Ni,dtype="complex")*1j
 
 
 
 ############################          FUNCS        ############################
 
 
-def breather(mu,t0):
+def breather(mu,t0,x0):
     """Returns the spatio-temporal form of a breather with a given phase mu of the eigenvalue"""
 
     
     #mu = np.pi/3
     l0 = 0.5*np.exp(1j*mu)
-    u = 4*np.arctan(np.tan(mu)*np.sin((tt-t0)*np.cos(mu))/np.cosh(xx*np.sin(mu)))
+    u = 4*np.arctan(np.tan(mu)*np.sin((tt-t0)*np.cos(mu))/np.cosh((xx-x0)*np.sin(mu)))
 
     return u
     
@@ -94,12 +94,20 @@ save = 1
 
 #u = sine(0.01,2,1)
 
-u = breather(np.pi/3,1)
+#u = breather(np.pi/3,1)
+
+u = breather(np.pi/3,1,-10)
+#u += breather(np.pi/3+0.01,1,10)
 
 ux = np.diff(u[n])/dx
 ut = (u[n+1]-u[n])/dt
 
 print("CALCULATING THE TRACE")
+
+
+plt.figure()
+plt.plot(x,u[n])
+plt.show()
 
 trace = sg.scatter(u[n],ux,ut,Er,Ei,dx,dt)
 
@@ -113,7 +121,7 @@ print("SAVING DATA")
 
 if save == 1:
     
-    name = "breather_new"
+    name = "breather_2_br"
     wave = "breather"
 
     np.save("/data/sg/"+wave+"/x_"+name+"_neg.npy", x)
@@ -130,26 +138,30 @@ plt.figure()
 plt.plot(x,u[n])
 
 
-plt.figure()
-plt.pcolormesh(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.real-2)))
-plt.title(r"$\Re(trM)$")
-plt.colorbar()
-
-plt.figure()
-plt.pcolormesh(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.imag)))
-plt.title(r"$\Im(trM)$")
-plt.colorbar()
 
 plt.figure()
 plt.pcolormesh(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.real-2)))
 plt.title(r"$\Re(trM)$")
 plt.colorbar()
 plt.contour(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.real-2)))
+plt.savefig("re.pdf", bbox_inches="tight")
 
 plt.figure()
 plt.pcolormesh(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.imag)))
 plt.title(r"$\Im(trM)$")
 plt.colorbar()
 plt.contour(Er.real,Ei.imag,sg.linlogmat(np.transpose(trace.imag)))
+plt.savefig("im.pdf", bbox_inches="tight")
+
+
+
+G = (np.abs(trace)-2)**2+trace.imag**2
+
+plt.figure()
+plt.pcolormesh(Er.real,Ei.imag,sg.linlogmat(np.transpose(G)))
+plt.title(r"$(|\Re(trM)|-2)^2+\Im(trM)^2$")
+plt.colorbar()
+plt.contour(Er.real,Ei.imag,sg.linlogmat(np.transpose(G)))
+plt.savefig("G.pdf", bbox_inches="tight")
 
 plt.show()

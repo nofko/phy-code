@@ -42,11 +42,11 @@ xx,tt = np.meshgrid(x,t)
 Nr = 1000
 Ni = 1000
 
-Emin_x = -0.15
-Emax_x = -0.1
+Emin_x = -0.26
+Emax_x = -0.01
 
-Emin_y = 0.2
-Emax_y = 0.22
+Emin_y = 0.05
+Emax_y = 0.26
 
 dEx = abs(Emax_x-Emin_x)/Nr
 dEy = abs(Emax_y-Emin_y)/Ni
@@ -142,18 +142,20 @@ save = 0
 #u = sine(0.01,2,1)
 
 u = breather(np.pi/3,1,0)
-#u += breather(np.pi/3,1,10)
+#u += breather(np.pi/3+0.01,1,10)
 
 ux = np.diff(u[n])/dx
 ut = (u[n+1]-u[n])/dt
+
+plt.plot(u[0])
 
 print("CALCULATING THE TRACE")
 
 
 tr1 = sg.scatter(u[n],ux,ut,Er+Emin_y*1j,dx,dt)+2
-tr2 = sg.scatter(u[n],ux,ut,Ei+Emax_x,dx,dt)+2
+tr2 = sg.scatter(u[n],ux,ut,Ei*1j+Emax_x,dx,dt)+2
 tr3 = sg.scatter(u[n],ux,ut,Er+Emax_y*1j,dx,dt)+2
-tr4 = sg.scatter(u[n],ux,ut,Ei+Emin_x,dx,dt)+2
+tr4 = sg.scatter(u[n],ux,ut,Ei*1j+Emin_x,dx,dt)+2
 
 # x0 = -.125
 # y0 = +.21
