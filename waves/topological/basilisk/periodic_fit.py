@@ -47,7 +47,7 @@ for i in range(len(f)):
     
 np.save("loc_len.npy",x0)
 
-plt.plot(f,1/x0,"o")
+plt.plot(f,-1/x0,"o")
 
 # plt.plot(x,np.exp(a*x+b))
 
