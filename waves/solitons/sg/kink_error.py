@@ -37,14 +37,16 @@ L = 15
 dt = T/N
 t = np.linspace(T0,T+T0,N)
 
-x = np.linspace(-L/2,L/2,N)
-dx = abs(x[1]-x[0])
-
-xx,tt = np.meshgrid(x,t)
 
 E = np.linspace(-2,-0.01,N,dtype="complex")
 
+# L = 20
 
+# dx = [0.4,0.2,0.04,0.02,0.01,0.004]
+
+L = [5,10,20,30,40,50,60,70]
+
+dx = 0.02
 ############################          FUNCS        ############################
 
 
@@ -79,37 +81,11 @@ def periodic_kink(mm,v,NN):
 
     return YYper,Xmax
 
-############################          TRACE        ############################
-
-save = 0
-
-n = 0
-
-m = 0.8
-V = 0.3
-
-u = kink(1)
-
-# u, xmax = periodic_kink(m,V,5)
-
-# dx = xmax/N
-
-# x = np.linspace(0,xmax,N)
-
-ux = np.diff(u,axis=1)[n]/dx
-ut = np.diff(u,axis=0)[n]/dt
-
-print("CALCULATING THE TRACE")
-
-trace = sg.scatter(u[n],ux,ut,E,dx,dt)
-
-print(argrelmin(sg.linlog(trace.real)))
-print(trace.real)
 
 ############################          ZEROS        ############################
 
 
-def trace_finder_plus(E):
+def trace_finder_plus(E,dx):
     
     Mt = sg.B(u[n],ux,ut,E+0j,dx,dt)
 
@@ -121,7 +97,7 @@ def trace_finder_plus(E):
     else:
         return np.sign(tr)*(1+np.log(np.abs(tr)))-1
     
-def trace_finder_minus(E):
+def trace_finder_minus(E,dx):
     
     Mt = sg.B(u[n],ux,ut,E+0j,dx,dt)
 
@@ -134,7 +110,7 @@ def trace_finder_minus(E):
         return np.sign(tr)*(1+np.log(np.abs(tr)))+1
 
 
-def find_zeros(E,trace):
+def find_zeros(E,trace,dx):
 
     Eigs_plus = []
     Eigs_minus = []
@@ -159,27 +135,61 @@ def find_zeros(E,trace):
 
     for i in range(len(Ebr)-1):
 
-        if (np.sign(trace_finder_plus(Ebr[i]))!=np.sign(trace_finder_plus(Ebr[i+1]))):
+        if (np.sign(trace_finder_plus(Ebr[i],dx))!=np.sign(trace_finder_plus(Ebr[i+1],dx))):
     
-            Eigs_plus.append(bisect(trace_finder_plus,Ebr[i],Ebr[i+1],xtol=1e-16))
+            Eigs_plus.append(bisect(trace_finder_plus,Ebr[i],Ebr[i+1],xtol=1e-16,args=(dx)))
 
-        if (np.sign(trace_finder_minus(Ebr[i]))!=np.sign(trace_finder_minus(Ebr[i+1]))):
+        if (np.sign(trace_finder_minus(Ebr[i],dx))!=np.sign(trace_finder_minus(Ebr[i+1],dx))):
         
-            Eigs_minus.append(bisect(trace_finder_minus,Ebr[i],Ebr[i+1],xtol=1e-16))
+            Eigs_minus.append(bisect(trace_finder_minus,Ebr[i],Ebr[i+1],xtol=1e-16,args=(dx)))
 
 
     return Eigs_plus,Eigs_minus
 
 
 
+############################          TRACE        ############################
+
+save = 0
+
+n = 0
+
+m = 0.8
+V = 0.3
+
+data = np.zeros((len(L),3))
+
+for i in range(len(L)):
+
+    x = np.linspace(-L[i]/2,L[i]/2,int(L[i]/dx) + 1)
+    
+    xx,tt = np.meshgrid(x,t)
+
+    u = kink(1)
+
+    ux = np.diff(u,axis=1)[n]/dx
+    ut = np.diff(u,axis=0)[n]/dt
+
+    print("CALCULATING THE TRACE FOR L = ", L[i])
+
+    trace = sg.scatter(u[n],ux,ut,E,dx,dt)
+
+    print("FINDING ZEROS NOW")
+    Epls, Emns = find_zeros(E.real,trace,dx)
+
+    print("+1 eigenvalues: ", Epls)
+    print("-1 eigenvalues: ", Emns)
+
+    data[i][0] = L[i]
+    data[i][1] = Epls[0]
+    data[i][2] = Emns[0]
+
+
+np.save("errors_dx.npy", data)
+
 ############################          ZEROS        ############################
 
 
-print("FINDING ZEROS NOW")
-Epls, Emns = find_zeros(E.real,trace.real)
-
-print("+1 eigenvalues: ", Epls)
-print("-1 eigenvalues: ", Emns)
 
 
 ############################          SAVE         ############################

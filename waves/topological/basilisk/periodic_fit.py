@@ -45,15 +45,15 @@ for i in range(len(f)):
     x0[i] = a
 
     
-np.save(x0,"loc_len.npy")
+np.save("loc_len.npy",x0)
 
-# plt.plot(x,y)
+plt.plot(f,1/x0,"o")
 
 # plt.plot(x,np.exp(a*x+b))
 
 # plt.semilogy()
 
-# plt.xlabel("$x$ [m]")
-# plt.ylabel("$\eta$ [mm]")
-
+plt.xlabel("$f$ [Hz]")
+plt.ylabel("$x_0$ [m]")
+plt.savefig("local.pdf")
 #plt.show()
