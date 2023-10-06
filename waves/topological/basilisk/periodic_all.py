@@ -9,7 +9,7 @@ c_program_path = "./periodic"
 output_file = "data/out_p"
 
 
-f = np.arange(5,18)/10
+f = np.linspace(0.5,1.8,20)
 A = 0.0032*(1/(f+0.5))**1.7
 
 for i in range(len(f)):
