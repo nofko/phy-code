@@ -15,7 +15,7 @@ plt.rcParams.update(params)
 
 
 N = 10000
-T = 0.7
+T = 2
 
 t = np.linspace(0,T,N)
 
@@ -32,7 +32,8 @@ M = 0.01
 mu = 0.15
 I = 4*M*L**2/3
 om0 = np.sqrt(M*g*L/I)
-
+OM = 9*2*np.pi
+B = 120
 
 ft = np.zeros((N))
 nt = np.zeros((N))
@@ -57,7 +58,7 @@ def rhs(t,u):
     x1_dot = u[1]
 
 
-    v1_dot = om0**2*np.sin(u[0])
+    v1_dot = (om0**2+B*np.sin(OM*t))*np.sin(u[0])
 
     # else:
     #     print(1)
@@ -71,7 +72,7 @@ def rhs_slide(t,u):
 
     x1_dot = u[1]
 
-    v1_dot = M*L*(g-L*u[1]**2*np.cos(u[0]))*(np.sin(u[0])-mu*np.cos(u[0]))/(I+M*L**2*np.sin(u[0])*(np.sin(u[0])-mu*np.cos(u[0])));
+    v1_dot = M*L*(g-L*u[1]**2*np.cos(u[0])+B*np.sin(OM*t))*(np.sin(u[0])-mu*np.cos(u[0]))/(I+M*L**2*np.sin(u[0])*(np.sin(u[0])-mu*np.cos(u[0])));
     
     return np.array([x1_dot,v1_dot])
 
