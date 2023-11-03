@@ -21,23 +21,23 @@ plt.rcParams.update(params)
 
 
 N = 10000
-T = 0.33
+T = 0.5
 
 t = np.linspace(0,T,N)
 
 dt = t[1]-t[0]
 
-th0 = 74.2*np.pi/180
+th0 = 74*np.pi/180
 u = np.array([th0, 0, 0, 0])
 
 s = np.zeros((N,4))
 
 g = 9.81
-L = 0.254
-M = 0.0554
+L = 0.22
+M = 0.055
 
-muk = 0.8
-mus = 1.6
+muk = 0.4
+mus = 1.9
 
 
 
