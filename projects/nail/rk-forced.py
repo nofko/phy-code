@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-
+from scipy.integrate import odeint
 plt.rcParams['text.latex.preamble']=r"\usepackage{lmodern}"
 params = {'text.usetex' : True,'font.family' : 'lmodern','svg.fonttype':'none'}
 plt.rcParams.update(params)
@@ -19,31 +19,35 @@ plt.rcParams.update(params)
 ############################         SETUP         ############################
 
 
+NT = 10000
+T = 8
 
-N = 10000
-T = 2
-
-t = np.linspace(0,T,N)
+t = np.linspace(0,T,NT)
 
 dt = t[1]-t[0]
+print(dt)
 
-th0 = 87*np.pi/180
+th0 = 89*np.pi/180
 u = np.array([th0, 0, 0, 0])
 
-s = np.zeros((N,4))
+s = np.zeros((NT,4))
 
 g = 9.81
-L = 0.254
-M = 0.01
+L = 0.02
+M = 0.001
 
-muk = 0.15
-mus = 0.2
+muk = 0.5
+mus = 1.4
 
-J = 9
-omega = 2*np.pi*15
+muk = 0.5
+mus = 1.4
 
-ft = np.zeros((N))
-nt = np.zeros((N))
+J = 0.00001
+omega = 2*np.pi*2
+fi0 = 3*np.pi/2
+
+ft = np.zeros((NT))
+nt = np.zeros((NT))
 
 slide = 0
 
@@ -54,9 +58,14 @@ slide = 0
 def FN(th,om,alpha):
     global slide
     
-    NN = M*g*(1+9*np.sin(th)**2-6*np.sin(th0)*np.sin(th))/4
+    # NN = M*g*(1+9*np.sin(th)**2-6*np.sin(th0)*np.sin(th))/4
 
-    F = M*g*(9*np.sin(th)*np.cos(th)-6*np.sin(th0)*np.cos(th))/4
+    # F = M*g*(9*np.sin(th)*np.cos(th)-6*np.sin(th0)*np.cos(th))/4
+
+    NN = M*g+M*L/2*(alpha*np.cos(th)-om**2*np.sin(th))
+
+    F = -M*L/2*(alpha*np.sin(th)+om**2*np.cos(th))
+    
 
     if abs(slide)>0:
         
@@ -86,16 +95,25 @@ def rhs(t,u):
         st = np.sin(th)
         ct = np.cos(th)
 
-        v1_dot = -((g-L/2*u[1]**2*st)*(ct-np.sign(-u[3])*muk*st)+J*ct*np.sin(omega*t))/(L/6+L/2*ct*(ct-np.sign(-u[3])*muk*st))
+        v1_dot = -((g-L/2*u[1]**2*st)*(ct-np.sign(-u[3])*muk*st)+J/M/L* 2*ct*np.sin(omega*t+fi0))/(L/6+L/2*ct*(ct-np.sign(-u[3])*muk*st))
 
-        v2_dot = -u[1]**2*L/2*ct - v1_dot*L/2*st + (np.sign(-u[3])*muk*(L/2*v1_dot-6*J*ct/L/M*np.sin(omega*t))/(3*ct-3*np.sign(-u[3])*muk*st))
-    
+        v2_dot = -u[1]**2*L/2*ct - v1_dot*L/2*st + (np.sign(-u[3])*muk*(L/2*v1_dot-6*J*ct/L/M*np.sin(omega*t+fi0))/(3*ct-3*np.sign(-u[3])*muk*st))
+        
     f, n = FN(u[0],u[1],v1_dot)
 
     
-    if abs(f)>=mus*n:
+    if abs(f)>=mus*n and slide == 0:
         
         slide = np.sign(f)*1
+
+
+    # if u[0]>np.pi or u[0]<0:
+
+    #     x1_dot = 0
+    #     x2_dot = 0
+        
+    #     v2_dot = 0
+    #     v2_dot = 0
 
     return np.array([x1_dot,v1_dot,x2_dot,-v2_dot])
 
@@ -105,7 +123,7 @@ def rhs(t,u):
 
 
 
-for i in range(N):
+for i in range(NT):
 
     s[i] = u
         
@@ -115,6 +133,10 @@ for i in range(N):
     d = dt*rhs(t[i]+dt,u+c)
         
     u = u+(a+2*(b+c)+d)/6
+
+    if abs(slide)>0 and abs(u[3])<0.01:
+            
+        slide = 0
 
     ft[i], nt[i] = FN(u[0],u[1],rhs(t[i],u)[1])
 
@@ -129,6 +151,7 @@ plt.figure(1)
 plt.plot(t,s[:,0]*180/np.pi)
 
 plt.axhline(0,linestyle="--",color="k")
+plt.axhline(180,linestyle="--",color="k")
 
 #plt.figure(2)
 
@@ -150,6 +173,8 @@ plt.axhline(0,linestyle="--",color="k")
 
 plt.figure()
 plt.plot(t,s[:,2]*1000)
+plt.plot(t,s[:,3]*100)
+
 plt.axhline(0,linestyle="--",color="k")
 
 # plt.plot(t,ft*1000)
