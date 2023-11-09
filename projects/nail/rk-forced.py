@@ -20,7 +20,7 @@ plt.rcParams.update(params)
 
 
 NT = 10000
-T = 8
+T = 16
 
 t = np.linspace(0,T,NT)
 
@@ -33,18 +33,18 @@ u = np.array([th0, 0, 0, 0])
 s = np.zeros((NT,4))
 
 g = 9.81
-L = 0.02
-M = 0.001
+L = 0.2
+M = 0.12
 
 muk = 0.5
 mus = 1.4
 
-muk = 0.5
-mus = 1.4
+muk = 0.15
+mus = 0.26
 
-J = 0.00001
-omega = 2*np.pi*2
-fi0 = 3*np.pi/2
+J = 5
+omega = 2*np.pi*40
+fi0 = np.pi
 
 ft = np.zeros((NT))
 nt = np.zeros((NT))

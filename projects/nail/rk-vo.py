@@ -36,8 +36,8 @@ g = 9.81
 L = 0.254
 M = 0.0554
 
-muk = 0.8
-mus = 1.6
+muk = 0.185
+mus = 0.26
 
 
 
@@ -57,9 +57,13 @@ def FN(th,om,alpha):
 
     F = M*g*(9*np.sin(th)*np.cos(th)-6*np.sin(th0)*np.cos(th))/4
 
+    NN = M*g+M*L/2*(alpha*np.cos(th)-om**2*np.sin(th))
+
+    F = -M*L/2*(alpha*np.sin(th)+om**2*np.cos(th))
+    
     if abs(slide)>0:
         
-        return NN*muk, NN
+        return slide*NN*muk, NN
 
     else:
 
@@ -72,8 +76,8 @@ def rhs(t,u):
     x1_dot = u[1]
 
     x2_dot = u[3]
-
     
+        
     if slide == 0:
         
         v1_dot = -3*g/L*np.cos(u[0])/2
@@ -84,14 +88,18 @@ def rhs(t,u):
         v1_dot = -(2*g/L-u[1]**2*np.sin(u[0]))/(np.cos(u[0])+1/(3*np.cos(u[0])-3*np.sign(-u[3])*muk*np.sin(u[0])))
 
         v2_dot = -u[1]**2*L/2*np.cos(u[0])-v1_dot*L/2*(np.sin(u[0])-np.sign(-u[3])*muk/(3*np.cos(u[0])-3*np.sign(-u[3])*muk*np.sin(u[0])))
-    
-    f, n = FN(u[0],u[1],v1_dot)
 
+        # if abs(u[3])<1e-3:
+
+        #     slide = 0
+        
+
+    f, n = FN(u[0],u[1],v1_dot)
     
     if abs(f)>=mus*n:
         
         slide = np.sign(f)*1
-
+        
     return np.array([x1_dot,v1_dot,x2_dot,-v2_dot])
 
 
@@ -145,6 +153,12 @@ plt.axhline(0,linestyle="--",color="k")
 
 plt.figure()
 plt.plot(t,s[:,2]*1000)
+plt.plot(t,s[:,3]*1000)
+
+plt.figure()
+plt.plot(t,ft)
+plt.plot(t,nt*mus)
+
 plt.axhline(0,linestyle="--",color="k")
 
 # plt.plot(t,ft*1000)
