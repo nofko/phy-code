@@ -20,7 +20,7 @@ plt.rcParams.update(params)
 
 
 NT = 10000
-T = 8
+T = 6
 
 
 t = np.linspace(0,T,NT)
@@ -39,15 +39,18 @@ g = 9.81
 L = 0.02
 M = 0.001
 
-muk = 0.5
-mus = 1.4
+L = 0.2
+M = 0.12
 
 muk = 0.5
 mus = 1.4
 
-J = 0.00001
-omega = 2*np.pi*2
-fi0 = 3*np.pi/2
+muk = 0.15
+mus = 0.26
+
+J = 5
+omega = 2*np.pi*40
+fi0 = np.pi
 
 ft = np.zeros((NT))
 nt = np.zeros((NT))
@@ -85,12 +88,12 @@ def rhs(t,u):
     th = u[0]
     x1_dot = u[1]
 
-    x2_dot = u[3]
-
     
     if slide == 0:
+
+        x2_dot = 0
         
-        v1_dot = -3*g/L*np.cos(u[0])/2+2*J/2/M/L*np.sin(u[0])*(np.sin(omega*t)+dc)
+        v1_dot = -3*g/L*np.cos(u[0])/2+2*J/2/M/L*np.cos(u[0])*(np.sin(omega*t))
         v2_dot = 0
     
     else:
@@ -98,16 +101,13 @@ def rhs(t,u):
         st = np.sin(th)
         ct = np.cos(th)
 
+        x2_dot = u[3]
+
         v1_dot = -((g-L/2*u[1]**2*st)*(ct-np.sign(-u[3])*muk*st)+J/M/L* 2*ct*np.sin(omega*t+fi0))/(L/6+L/2*ct*(ct-np.sign(-u[3])*muk*st))
 
         v2_dot = -u[1]**2*L/2*ct - v1_dot*L/2*st + (np.sign(-u[3])*muk*(L/2*v1_dot-6*J*ct/L/M*np.sin(omega*t+fi0))/(3*ct-3*np.sign(-u[3])*muk*st))
         
-    f, n = FN(u[0],u[1],v1_dot)
-
     
-    if abs(f)>=mus*n and slide == 0:
-
-        slide = np.sign(f)*1
 
 
     # if u[0]>np.pi or u[0]<0:
@@ -140,6 +140,12 @@ for i in range(NT):
     if abs(slide)>0 and abs(u[3])<0.01:
             
         slide = 0
+
+    f, n = FN(u[0],u[1],rhs(t[i],u)[1])
+
+    if abs(f)>=mus*n and slide == 0:
+
+        slide = np.sign(f)*1
 
     ft[i], nt[i] = FN(u[0],u[1],rhs(t[i],u)[1])
 
@@ -176,7 +182,6 @@ plt.axhline(180,linestyle="--",color="k")
 
 plt.figure()
 plt.plot(t,s[:,2]*1000)
-
 plt.plot(t,s[:,3]*100)
 
 plt.axhline(0,linestyle="--",color="k")
