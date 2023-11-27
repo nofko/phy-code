@@ -1,53 +1,58 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
 
 import time
 ## Setup
 
-#N = 3000
-#L = 400
-#x = np.linspace(0,L,N)
-#dx = L/N
+N = 1000
+L = 100
+x = np.linspace(0,L,N)
+dx = L/N
 
 
 ## Physics
 h = 3
-#A = 0.8
-#x0 = 50
+A = 0.05
+x0 = 50
 
-#delta = np.sqrt(4*h**3/A/3)
-#lam = 3/2/h**3
+delta = np.sqrt(4*h**3/A/3)
+lam = 3/2/h**3
 
-#u=A/np.cosh((x-100)/delta)**2
+u=A/np.cosh((x-L/2)/delta)**2
 #u+=0.5/np.cosh((x-50)/delta)**2
 
 #u = np.load("2_sol.npy")
 
 #h = 3
-tst = mat73.loadmat("data/canal/signal_soliton_cam/CumSum_one_soliton_A5mm_h3cm_20s_Signal_Tot.mat")
-sig = tst["SignalT"]
-sig = np.array(sig["Tot"])
+# tst = mat73.loadmat("data/canal/signal_soliton_cam/CumSum_one_soliton_A5mm_h3cm_20s_Signal_Tot.mat")
+# sig = tst["SignalT"]
+# sig = np.array(sig["Tot"])
 
-u0 = sig[80]
-x = tst["XX"]
-N = len(u)
-L = x[-1]
-dx = x[1]-x[0]
+# u0 = sig[80]
+# x = tst["XX"]
+# N = len(u)
+# L = x[-1]
+# dx = x[1]-x[0]
 
-FS = N/L 
-sos = signal.butter(4,5,'low',fs=int(FS),output="sos")
-u = signal.sosfilt(sos,u0)
+# FS = N/L 
+# sos = signal.butter(4,5,'low',fs=int(FS),output="sos")
+# u = signal.sosfilt(sos,u0)
 
 
-u = u[3800:9200]
+# u = u[3800:9200]
 
 lam = 3/2/h**3
 
+
+
 ## Potential and energies
 
-E_min = -lam*(np.max(u)-np.mean(u))
+E_min = -lam*(np.max(u)-np.mean(u))*3
 
-E_max =  E_min + 4*np.abs(E_min) # It can also be set to the Nyquist frequency np.pi/dx
+E_max =  E_min + 10*np.abs(E_min) # It can also be set to the Nyquist frequency np.pi/dx
 
-E = np.linspace(E_min,E_max,2000)
+E = np.linspace(E_min,E_max,1000)
 
 
 ## Useful plotting function
@@ -135,7 +140,9 @@ M12 = linlog(M[:,0,1])
 
 end = time.time()
 
+plt.plot(x,u)
 
+plt.figure()
 plt.title("Trace")
 plt.plot(E,trace)
 plt.axhline(1,0,1,ls="--",color="tab:red")
@@ -145,3 +152,5 @@ plt.xlabel("E")
 plt.ylabel("Trace")
 
 print("The time of execution of above program is :", end-start)
+
+plt.show()

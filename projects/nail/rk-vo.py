@@ -21,7 +21,7 @@ plt.rcParams.update(params)
 
 
 N = 10000
-T = 0.5
+T = 0.3
 
 t = np.linspace(0,T,N)
 
@@ -36,8 +36,8 @@ g = 9.81
 L = 0.22
 M = 0.055
 
-muk = 0.4
-mus = 1.9
+muk = 0.15
+mus = 0.26
 
 
 
@@ -85,12 +85,6 @@ def rhs(t,u):
 
         v2_dot = -u[1]**2*L/2*np.cos(u[0])-v1_dot*L/2*(np.sin(u[0])-np.sign(-u[3])*muk/(3*np.cos(u[0])-3*np.sign(-u[3])*muk*np.sin(u[0])))
     
-    f, n = FN(u[0],u[1],v1_dot)
-
-    
-    if abs(f)>=mus*n:
-        
-        slide = np.sign(f)*1
 
     return np.array([x1_dot,v1_dot,x2_dot,-v2_dot])
 
@@ -110,6 +104,12 @@ for i in range(N):
     d = dt*rhs(t[i]+dt,u+c)
         
     u = u+(a+2*(b+c)+d)/6
+
+    f, n = FN(u[0],u[1],rhs(t[i],u)[1])
+
+    if abs(f)>=mus*n:
+        
+        slide = np.sign(f)*1
 
     ft[i], nt[i] = FN(u[0],u[1],rhs(t[i],u)[1])
 
