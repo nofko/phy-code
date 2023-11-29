@@ -20,6 +20,7 @@ plt.rcParams.update(params)
 
 
 NT = 10000
+
 T = 6
 
 
@@ -36,14 +37,15 @@ u = np.array([th0, 0, 0, 0])
 s = np.zeros((NT,4))
 
 g = 9.81
-L = 0.02
-M = 0.001
+L = 0.2
+M = 0.12
 
 L = 0.2
 M = 0.12
 
-muk = 0.5
-mus = 1.4
+muk = 0.15
+mus = 0.26
+
 
 muk = 0.15
 mus = 0.26
